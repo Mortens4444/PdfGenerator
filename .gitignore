@@ -1,4 +1,5 @@
 .vs/
+bin/
 **/*.pdb
 **/*.exe
 **/*.exe.config

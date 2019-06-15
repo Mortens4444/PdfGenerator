@@ -34,13 +34,19 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.IO.Compression" />
-    <Reference Include="System.IO.Compression.FileSystem" />
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Printable\IPrintable.cs" />
+    <Compile Include="Printable\IPrintImage.cs" />
+    <Compile Include="Printable\IPrintText.cs" />
+    <Compile Include="Printable\PrintText.cs" />
+    <Compile Include="Printable\PrintImage.cs" />
+    <Compile Include="Printer.cs" />
+    <Compile Include="Printers\ImagePrinter.cs" />
+    <Compile Include="Printers\TextPrinter.cs" />
+    <Compile Include="Printers\PrinterBase.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
