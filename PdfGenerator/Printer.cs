@@ -30,9 +30,17 @@ namespace PdfGenerator
 			PrintDocument.PrinterSettings.PrintToFile = true;
 		}
 
-		public void Print(IPrintable printable, PrintPageEventArgs eventArgs)
+		public void Print(IEnumerable<IPrintable> printables)
 		{
-			printers[printable.GetType()].Print(printable, eventArgs);
+			foreach (var printable in printables)
+			{
+				PrintDocument.PrintPage += (_, eventArgs) =>
+				{
+					printers[printable.GetType()].Print(printable, eventArgs);
+				};
+			}
+
+			PrintDocument.Print();
 		}
 	}
 }
