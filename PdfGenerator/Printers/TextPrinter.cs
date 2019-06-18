@@ -1,19 +1,13 @@
 ﻿using PdfGenerator.Printable;
-using System.Drawing.Printing;
+using System.Drawing;
 
 namespace PdfGenerator.Printers
 {
-	class TextPrinter : PrinterBase
+	class TextPrinter : PrinterBase<PdfText>
 	{
-		public void PrintText(IPrintText printText, PrintPageEventArgs eventArgs)
+		public override void SpecificPrint(PdfText pdfText, Graphics graphics)
 		{
-			Setup(eventArgs);
-			eventArgs.Graphics.DrawString(printText.Text, printText.Font, printText.Brush, printText.Location.X, printText.Location.Y);
-		}
-
-		public override void Print(IPrintable printable, PrintPageEventArgs eventArgs)
-		{
-			PrintText(printable as IPrintText, eventArgs);
+			graphics.DrawString(pdfText.Text, pdfText.Font, pdfText.Brush, pdfText.Location.X, pdfText.Location.Y);
 		}
 	}
 }

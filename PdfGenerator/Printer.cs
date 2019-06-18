@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing.Printing;
 using System.IO;
+using System.Linq;
 
 namespace PdfGenerator
 {
@@ -11,11 +12,7 @@ namespace PdfGenerator
 	{
 		public PrintDocument PrintDocument;
 
-		private readonly Dictionary<Type, PrinterBase> printers = new Dictionary<Type, PrinterBase>()
-		{
-			{ typeof(PrintImage), new ImagePrinter() },
-			{ typeof(PrintText), new TextPrinter() }
-		};
+		private readonly IEnumerable<Type> printers = TypeExtensions.GetDerivedTypesOf<PrinterBase>();
 
 		public Printer(string pdfFile)
 		{
@@ -36,7 +33,9 @@ namespace PdfGenerator
 			{
 				PrintDocument.PrintPage += (_, eventArgs) =>
 				{
-					printers[printable.GetType()].Print(printable, eventArgs);
+					var supportedPrinterType = printers.First(printer => printer.BaseType.GenericTypeArguments.First().FullName == printable.GetType().FullName);
+					var supportedPrinter = Activator.CreateInstance(supportedPrinterType) as PrinterBase;
+					supportedPrinter.Print(printable, eventArgs);
 				};
 			}
 
