@@ -19,5 +19,7 @@
 		protected const string StrFontSize = "font_size";
 
 		protected const string StrColor = "color";
+
+		protected const string StrLineWidth = "line_width";
 	}
 }

@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{2F84B195-EF28-4E89-81F7-A468734EDEF3}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <RootNamespace>PdfGenerator</RootNamespace>
-    <AssemblyName>PdfGenerator</AssemblyName>
+    <ProjectGuid>{D7E11C69-2482-4509-9991-6C8987C673FD}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>MultiPdfGeneration</RootNamespace>
+    <AssemblyName>MultiPdfGeneration</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -32,30 +32,29 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject />
-  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.Configuration" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PrintablesProvider.cs" />
-    <Compile Include="Printable\IPrintable.cs" />
-    <Compile Include="Printable\PdfRectangle.cs" />
-    <Compile Include="Printable\PdfText.cs" />
-    <Compile Include="Printable\PdfImage.cs" />
-    <Compile Include="Printer.cs" />
-    <Compile Include="Printers\ImagePrinter.cs" />
-    <Compile Include="Printers\RectanglePrinter.cs" />
-    <Compile Include="Printers\TextPrinter.cs" />
-    <Compile Include="Printers\PrinterBase.cs" />
-    <Compile Include="PdfPrinter.cs" />
+    <Compile Include="PositionPostfixProvider.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TypeExtensions.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PdfGenerator\PdfGenerator.csproj">
+      <Project>{2f84b195-ef28-4e89-81f7-a468734edef3}</Project>
+      <Name>PdfGenerator</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

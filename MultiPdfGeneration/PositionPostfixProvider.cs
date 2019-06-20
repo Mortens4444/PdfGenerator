@@ -1,4 +1,4 @@
-﻿namespace PdfGenerator
+﻿namespace MultiPdfGeneration
 {
 	class PositionPostfixProvider
 	{

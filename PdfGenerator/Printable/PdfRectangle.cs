@@ -1,4 +1,6 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Collections.Generic;
+using System.Drawing;
 
 namespace PdfGenerator.Printable
 {
@@ -14,13 +16,19 @@ namespace PdfGenerator.Printable
 
 		public int Height { get; private set; }
 
-		public PdfRectangle(Pen pen, int x, int y, int width, int height)
+		public PdfRectangle(Color color, int lineWidth, int x, int y, int width, int height)
 		{
-			Pen = pen;
+			Pen = new Pen(color, lineWidth);
 			X = x;
 			Y = y;
 			Width = width;
 			Height = height;
+		}
+
+		public static PdfRectangle Create(Dictionary<string, string> attributes)
+		{
+			var lineWidth = attributes.ContainsKey(StrLineWidth) ? Convert.ToInt32(attributes[StrLineWidth]) : 1;
+			return new PdfRectangle(Color.FromName(attributes[StrColor]), lineWidth, Convert.ToInt32(attributes[StrX]), Convert.ToInt32(attributes[StrY]), Convert.ToInt32(attributes[StrWidth]), Convert.ToInt32(attributes[StrHeight]));
 		}
 	}
 }

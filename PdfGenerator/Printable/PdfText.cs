@@ -6,7 +6,7 @@ namespace PdfGenerator.Printable
 {
 	class PdfText : IPrintable
 	{
-		public string Text { get; private set; }
+		public string Text { get; set; }
 
 		public Point Location { get; private set; }
 
