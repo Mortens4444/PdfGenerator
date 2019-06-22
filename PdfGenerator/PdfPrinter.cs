@@ -14,8 +14,7 @@ namespace PdfGenerator
 		/// <param name="replacables">Replace key value pairs in the printing be this map</param>
 		public void Print(string printOutputPath, string printingRulesFilePath, Dictionary<string, string> replacables = null)
 		{
-			var printablesProvider = new PrintablesProvider();
-			var printables = printablesProvider.Get(printingRulesFilePath);
+			var printables = Printables.LoadFromFiles(printingRulesFilePath);
 			if (replacables != null && replacables.Any())
 			{
 				var texts = printables.Where(printable => printable is PdfText);

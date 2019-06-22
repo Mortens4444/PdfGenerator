@@ -4,56 +4,47 @@ using System.Drawing;
 
 namespace PdfGenerator.Printable
 {
-	class PdfImage : IPrintable
+	public class PdfImage : ISizedPrintable
 	{
 		public Image Image { get; private set; }
 
-		public Point Location { get; private set; }
+		private readonly string imageFilePath;
 
-		public Size Size { get; private set; }
-
-		public int X
+		public PdfImage(string imageFilePath, int x = 0, int y = 0) : this(Image.FromFile(imageFilePath), new Point(x, y))
 		{
-			get
-			{
-				return Location.X;
-			}
+			this.imageFilePath = imageFilePath;
 		}
 
-		public int Y
+		public PdfImage(string imageFilePath, int x, int y, int width, int height) : this(Image.FromFile(imageFilePath), new Point(x, y), new Size(width, height))
 		{
-			get
-			{
-				return Location.Y;
-			}
+			this.imageFilePath = imageFilePath;
 		}
 
-		public PdfImage(string imagePath, int x = 0, int y = 0) : this(Image.FromFile(imagePath), new Point(x, y)) { }
+		private PdfImage(Image image, Point location) : this(image, location, new Size(image.Width, image.Height)) { }
 
-		public PdfImage(string imagePath, int x, int y, int width, int height) : this(Image.FromFile(imagePath), new Point(x, y), new Size(width, height)) { }
-
-		public PdfImage(Image image, int x = 0, int y = 0) : this(image, new Point(x, y), new Size(image.Width, image.Height)) { }
-
-		public PdfImage(Image image, Point location) : this(image, location, new Size(image.Width, image.Height)) { }
-
-		public PdfImage(Image image, Point location, Size size)
+		private PdfImage(Image image, Point location, Size size)
 		{
 			Image = image;
 			Location = location;
 			Size = size;
 		}
 
-		public static PdfImage Create(Dictionary<string, string> attributes)
+		public PdfImage(Dictionary<string, string> attributes)
 		{
-			if (attributes.ContainsKey(StrX) && attributes.ContainsKey(StrY))
-			{
-				if (attributes.ContainsKey(StrWidth) && attributes.ContainsKey(StrHeight))
-				{
-					return new PdfImage(attributes[StrImageFilename], Convert.ToInt32(attributes[StrX]), Convert.ToInt32(attributes[StrY]), Convert.ToInt32(attributes[StrWidth]), Convert.ToInt32(attributes[StrHeight]));
-				}
-				return new PdfImage(attributes[StrImageFilename], Convert.ToInt32(attributes[StrX]), Convert.ToInt32(attributes[StrY]));
-			}
-			return new PdfImage(attributes[StrImageFilename]);
+			imageFilePath = attributes[StrImageFilename];
+			Image = Image.FromFile(imageFilePath);
+			Location = new Point(attributes.ContainsKey(StrX) ? Convert.ToInt32(attributes[StrY]) : 0, attributes.ContainsKey(StrY) ? Convert.ToInt32(attributes[StrY]) : 0);
+			Size = new Size(attributes.ContainsKey(StrWidth) ? Convert.ToInt32(attributes[StrWidth]) : Image.Width, attributes.ContainsKey(StrHeight) ? Convert.ToInt32(attributes[StrHeight]) : Image.Height);
+		}
+
+		public override void DrawOnGraphics(Graphics graphics)
+		{
+			graphics.DrawImage(Image, X, Y, Width, Height);
+		}
+
+		public override string ToString()
+		{
+			return $"<PrintImage {StrImageFilename}=\"{imageFilePath}\" {StrX}=\"{X}\" {StrY}=\"{Y}\" {StrWidth}=\"{Width}\" {StrHeight}=\"{Height}\" />";
 		}
 	}
 }

@@ -1,6 +1,8 @@
-﻿namespace PdfGenerator.Printable
+﻿using System.Drawing;
+
+namespace PdfGenerator.Printable
 {
-	abstract class IPrintable
+	public abstract class IPrintable
 	{
 		protected const string StrX = "x";
 
@@ -21,5 +23,27 @@
 		protected const string StrColor = "color";
 
 		protected const string StrLineWidth = "line_width";
+
+		public Point Location { get; protected set; }
+
+		public int X
+		{
+			get
+			{
+				return Location.X;
+			}
+		}
+
+		public int Y
+		{
+			get
+			{
+				return Location.Y;
+			}
+		}
+
+		public abstract void DrawOnGraphics(Graphics graphics);
+
+		public new abstract string ToString();
 	}
 }

@@ -4,11 +4,11 @@ using System.Drawing;
 
 namespace PdfGenerator.Printable
 {
-	public class PdfRectangle : ISizedPrintable
+	public class PdfEllipse : ISizedPrintable
 	{
 		public Pen Pen { get; private set; }
 
-		public PdfRectangle(Color color, int lineWidth, Point location1, Point location2)
+		public PdfEllipse(Color color, int lineWidth, Point location1, Point location2)
 		{
 			if (location2.X < location1.X)
 			{
@@ -28,14 +28,14 @@ namespace PdfGenerator.Printable
 			Size = new Size(location2.X - location1.X, location2.Y - location1.Y);
 		}
 
-		public PdfRectangle(Color color, int lineWidth, int x, int y, int width, int height)
+		public PdfEllipse(Color color, int lineWidth, int x, int y, int width, int height)
 		{
 			Pen = new Pen(color, lineWidth);
 			Location = new Point(x, y);
 			Size = new Size(width, height);
 		}
 
-		public PdfRectangle(Dictionary<string, string> attributes)
+		public PdfEllipse(Dictionary<string, string> attributes)
 		{
 			var lineWidth = attributes.ContainsKey(StrLineWidth) ? Convert.ToInt32(attributes[StrLineWidth]) : 1;
 			Pen = new Pen(Color.FromName(attributes[StrColor]), lineWidth);
@@ -45,12 +45,12 @@ namespace PdfGenerator.Printable
 
 		public override void DrawOnGraphics(Graphics graphics)
 		{
-			graphics.DrawRectangle(Pen, X, Y, Width, Height);
+			graphics.DrawEllipse(Pen, X, Y, Width, Height);
 		}
 
 		public override string ToString()
 		{
-			return $"<PrintRectangle {StrColor}=\"{Pen.Color.Name}\" {StrX}=\"{X}\" {StrY}=\"{Y}\" {StrWidth}=\"{Width}\" {StrHeight}=\"{Height}\" {StrLineWidth}=\"{Pen.Width}\" />";
+			return $"<PrintEllipse {StrColor}=\"{Pen.Color.Name}\" {StrX}=\"{X}\" {StrY}=\"{Y}\" {StrWidth}=\"{Width}\" {StrHeight}=\"{Height}\" {StrLineWidth}=\"{Pen.Width}\" />";
 		}
 	}
 }

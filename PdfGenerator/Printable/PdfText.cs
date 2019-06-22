@@ -4,11 +4,9 @@ using System.Drawing;
 
 namespace PdfGenerator.Printable
 {
-	class PdfText : IPrintable
+	public class PdfText : IPrintable
 	{
 		public string Text { get; set; }
-
-		public Point Location { get; private set; }
 
 		public Color Color { get; private set; }
 
@@ -35,11 +33,11 @@ namespace PdfGenerator.Printable
 
 		public PdfText(string text, int x, int y) : this(text, new Point(x, y), Color.Black) { }
 
-		public PdfText(string text, int x, int y, Color color, string fontName = "Arial", float fontSize = 16) : this(text, new Point(x, y), color, fontName, fontSize) { }
+		public PdfText(string text, int x, int y, Color color, string fontName = "Arial", float fontSize = 12) : this(text, new Point(x, y), color, fontName, fontSize) { }
 
 		public PdfText(string text, Point location) : this(text, location, Color.Black) { }
 
-		public PdfText(string text, Point location, Color color, string fontName = "Arial", float fontSize = 16)
+		public PdfText(string text, Point location, Color color, string fontName = "Arial", float fontSize = 12)
 		{
 			Text = text;
 			Location = location;
@@ -48,40 +46,23 @@ namespace PdfGenerator.Printable
 			FontSize = fontSize;
 		}
 
-		public static PdfText Create(Dictionary<string, string> attributes)
+		public PdfText(Dictionary<string, string> attributes)
 		{
-			if (attributes.ContainsKey(StrColor))
-			{
-				if (attributes.ContainsKey(StrFontName) && (attributes.ContainsKey(StrFontSize)))
-				{
-					return new PdfText(attributes[StrText], Convert.ToInt32(attributes[StrX]), Convert.ToInt32(attributes[StrY]), Color.FromName(attributes[StrColor]), attributes[StrFontName], Convert.ToSingle(attributes[StrFontSize]));
-				}
-				else if (attributes.ContainsKey(StrFontName))
-				{
-					return new PdfText(attributes[StrText], Convert.ToInt32(attributes[StrX]), Convert.ToInt32(attributes[StrY]), Color.FromName(attributes[StrColor]), attributes[StrFontName]);
-				}
-				else if (attributes.ContainsKey(StrFontSize))
-				{
-					return new PdfText(attributes[StrText], Convert.ToInt32(attributes[StrX]), Convert.ToInt32(attributes[StrY]), Color.FromName(attributes[StrColor]), fontSize: Convert.ToSingle(attributes[StrFontSize]));
-				}
-				return new PdfText(attributes[StrText], Convert.ToInt32(attributes[StrX]), Convert.ToInt32(attributes[StrY]), Color.FromName(attributes[StrColor]));
-			}
-			else
-			{
-				if (attributes.ContainsKey(StrFontName) && (attributes.ContainsKey(StrFontSize)))
-				{
-					return new PdfText(attributes[StrText], Convert.ToInt32(attributes[StrX]), Convert.ToInt32(attributes[StrY]), Color.Black, attributes[StrFontName], Convert.ToSingle(attributes[StrFontSize]));
-				}
-				else if (attributes.ContainsKey(StrFontName))
-				{
-					return new PdfText(attributes[StrText], Convert.ToInt32(attributes[StrX]), Convert.ToInt32(attributes[StrY]), Color.Black, attributes[StrFontName]);
-				}
-				else if (attributes.ContainsKey(StrFontSize))
-				{
-					return new PdfText(attributes[StrText], Convert.ToInt32(attributes[StrX]), Convert.ToInt32(attributes[StrY]), Color.Black, fontSize: Convert.ToSingle(attributes[StrFontSize]));
-				}
-				return new PdfText(attributes[StrText], Convert.ToInt32(attributes[StrX]), Convert.ToInt32(attributes[StrY]));
-			}
+			Location = new Point(Convert.ToInt32(attributes[StrX]), Convert.ToInt32(attributes[StrY]));
+			Color = attributes.ContainsKey(StrColor) ? Color.FromName(attributes[StrColor]) : Color.Black;
+			Text = attributes[StrText];
+			FontName = attributes.ContainsKey(StrFontName) ? attributes[StrFontName] : "Arial";
+			FontSize = attributes.ContainsKey(StrFontSize) ? Convert.ToSingle(attributes[StrFontSize]) : 12;
+		}
+
+		public override void DrawOnGraphics(Graphics graphics)
+		{
+			graphics.DrawString(Text, Font, Brush, Location);
+		}
+
+		public override string ToString()
+		{
+			return $"<PrintText {StrText}=\"{Text}\" {StrX}=\"{X}\" {StrY}=\"{Y}\" {StrFontName}=\"{Font.FontFamily.Name}\" {StrFontSize}=\"{FontSize}\" {StrColor}=\"{Color.Name}\" />";
 		}
 	}
 }

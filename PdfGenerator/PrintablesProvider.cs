@@ -10,9 +10,9 @@ namespace PdfGenerator
 {
 	class PrintablesProvider
 	{
-		public IList<IPrintable> Get(string printingFilePath)
+		public Printables Get(string printingFilePath)
 		{
-			var result = new List<IPrintable>();
+			var result = new Printables();
 			var printables = TypeExtensions.GetDerivedTypesOf<IPrintable>();
 			if (File.Exists(printingFilePath))
 			{
@@ -30,7 +30,7 @@ namespace PdfGenerator
 						}
 
 						var printable = printables.FirstOrDefault(p => childNode.Name == p.Name.Replace("Pdf", "Print"));
-						var createdObject = printable.GetMethod("Create").Invoke(null, new[] { attributes }) as IPrintable;
+						var createdObject = Activator.CreateInstance(printable, attributes) as IPrintable;
 						result.Add(createdObject);
 					}
 					catch (Exception ex)
@@ -41,7 +41,7 @@ namespace PdfGenerator
 			}
 			else
 			{
-				MessageBox.Show($"Cannot find printing rules file: {printingFilePath}", "File not found", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+				MessageBox.Show($"Cannot find printing rules file: {printingFilePath}{Environment.NewLine}You can create one with the Print Page Editor", "File not found", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
 			}
 			return result;
 		}
