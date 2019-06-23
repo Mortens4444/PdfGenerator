@@ -37,7 +37,15 @@ namespace PrintPageEditor
 
 		private void pbCanvas_MouseDown(object sender, MouseEventArgs e)
 		{
-			mouseDownLocation = e.Location;
+			if (e.Button == MouseButtons.Left)
+			{
+				mouseDownLocation = e.Location;
+			}
+			else
+			{
+				mouseDownLocation = null;
+				temporarlyPrintable = null;
+			}
 		}
 
 		private void pForeColor_DoubleClick(object sender, EventArgs e)
@@ -75,10 +83,11 @@ namespace PrintPageEditor
 
 		private void pbCanvas_MouseMove(object sender, MouseEventArgs e)
 		{
-			showHorizontalHelper = printables.Any(printable => printable.Y == e.Y);
-			showVerticalHelper = printables.Any(printable => printable.X == e.X);
 			mouseX = e.X;
 			mouseY = e.Y;
+			showHorizontalHelper = printables.Any(printable => printable.Y == mouseY);
+			showVerticalHelper = printables.Any(printable => printable.X == mouseX);
+			tssLabel.Text = $"X: {mouseX}, Y: {mouseY}";
 
 			if (mouseDownLocation.HasValue)
 			{
@@ -89,11 +98,11 @@ namespace PrintPageEditor
 		private void CreateNewObject(Point? mouseButtonRelesedLocation = null)
 		{
 			mouseUpLocation = mouseButtonRelesedLocation;
-			if (mouseDownLocation.HasValue && mouseUpLocation.HasValue)
+			if (tabControl.SelectedTab == tpShapes && mouseDownLocation.HasValue && mouseUpLocation.HasValue && mouseDownLocation.Value.X != mouseUpLocation.Value.X && mouseDownLocation.Value.Y != mouseUpLocation.Value.Y)
 			{
 				if (rbRectangle.Checked)
 				{
-					temporarlyPrintable = new PdfRectangle(foregroundColor, (int)nudLineWidth.Value, mouseDownLocation.Value, mouseUpLocation.Value);
+					temporarlyPrintable = new PdfRectangle(foregroundColor, (int)nudLineWidth.Value, mouseDownLocation.Value, mouseUpLocation.Value);					
 				}
 				else if (rbEllipse.Checked)
 				{
@@ -102,11 +111,11 @@ namespace PrintPageEditor
 			}
 			if (mouseDownLocation.HasValue)
 			{
-				if (rbText.Checked)
+				if (tabControl.SelectedTab == tpText && !String.IsNullOrWhiteSpace(tbText.Text))
 				{
 					temporarlyPrintable = new PdfText(tbText.Text, mouseDownLocation.Value, fontColor, fontName, fontSize);
 				}
-				else if (rbImage.Checked)
+				else if (tabControl.SelectedTab == tpImage && !String.IsNullOrWhiteSpace(imageFilePath))
 				{
 					temporarlyPrintable = new PdfImage(imageFilePath, mouseDownLocation.Value.X, mouseDownLocation.Value.Y, (int)nudImageWidth.Value, (int)nudImageHeight.Value);
 				}
@@ -117,19 +126,40 @@ namespace PrintPageEditor
 
 		private void tsmi_Save_Click(object sender, EventArgs e)
 		{
+			SavePrintingRuleFileWithDialog();
+		}
+
+		private string SavePrintingRuleFileWithDialog()
+		{
 			saveFileDialog1.InitialDirectory = Application.StartupPath;
 			if (saveFileDialog1.ShowDialog(this) == DialogResult.OK)
 			{
 				var fileContent = printables.GetFileContent();
 				File.WriteAllText(saveFileDialog1.FileName, fileContent);
+				return saveFileDialog1.FileName;
 			}
+			return null;
 		}
 
 		private void pbCanvas_MouseUp(object sender, MouseEventArgs e)
 		{
 			CreateNewObject(e.Location);
-			printables.Add(temporarlyPrintable);
+			if (temporarlyPrintable != null)
+			{
+				printables.Add(temporarlyPrintable);
+				AddItem(temporarlyPrintable);
+			}
 			mouseDownLocation = null;
+		}
+
+		private void AddItem(IPrintable printable)
+		{
+			var item = printable.ToListViewItem();
+			if (lvPrintables.Items.Count % 2 == 0)
+			{
+				item.BackColor = Color.LightCyan;
+			}
+			lvPrintables.Items.Add(item);
 		}
 
 		private void MainForm_SizeChanged(object sender, EventArgs e)
@@ -156,6 +186,14 @@ namespace PrintPageEditor
 			if (openFileDialog1.ShowDialog(this) == DialogResult.OK)
 			{
 				printables = Printables.LoadFromFiles(openFileDialog1.FileName);
+				lvPrintables.Items.Clear();
+				foreach (var printable in printables)
+				{
+					AddItem(printable);
+				}
+				temporarlyPrintable = null;
+				pbCanvas.Select();
+				RefreshScreen(true);
 			}
 		}
 
@@ -171,6 +209,33 @@ namespace PrintPageEditor
 			}
 		}
 
+		private void pbCanvas_MouseLeave(object sender, EventArgs e)
+		{
+			tssLabel.Text = "Ready";
+		}
+
+		private void tsmiDeletePrintable_Click(object sender, EventArgs e)
+		{
+			foreach (ListViewItem selectedItem in lvPrintables.SelectedItems)
+			{
+				var printable = selectedItem.Tag as IPrintable;
+				printables.Remove(printable);
+				lvPrintables.Items.Remove(selectedItem);
+			}
+			RefreshScreen(true);
+		}
+
+		private void tsmiPrint_Click(object sender, EventArgs e)
+		{
+			var printingRulesFilePath = SavePrintingRuleFileWithDialog();
+			if (printingRulesFilePath != null)
+			{
+				var pdfPrinter = new PdfPrinter();
+				var printOutputPath = $"{printingRulesFilePath}.pdf";
+				pdfPrinter.Print(printOutputPath, printingRulesFilePath);
+			}
+		}
+
 		private void nudImageSizeChanged(object sender, EventArgs e)
 		{
 			CreateNewObject();
@@ -179,11 +244,6 @@ namespace PrintPageEditor
 		private void tbText_TextChanged(object sender, EventArgs e)
 		{
 			CreateNewObject();
-		}
-
-		private void rbText_CheckedChanged(object sender, EventArgs e)
-		{
-			tbText.Enabled = rbText.Checked;
 		}
 
 		private void cbFontSize_TextChanged(object sender, EventArgs e)

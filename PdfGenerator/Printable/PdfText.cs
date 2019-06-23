@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Windows.Forms;
 
 namespace PdfGenerator.Printable
 {
@@ -63,6 +64,15 @@ namespace PdfGenerator.Printable
 		public override string ToString()
 		{
 			return $"<PrintText {StrText}=\"{Text}\" {StrX}=\"{X}\" {StrY}=\"{Y}\" {StrFontName}=\"{Font.FontFamily.Name}\" {StrFontSize}=\"{FontSize}\" {StrColor}=\"{Color.Name}\" />";
+		}
+
+		public override ListViewItem ToListViewItem()
+		{
+			var result = base.ToListViewItem();
+			result.SubItems.Add(String.Empty);
+			result.SubItems.Add(String.Empty);
+			result.SubItems.Add(Text);
+			return result;
 		}
 	}
 }

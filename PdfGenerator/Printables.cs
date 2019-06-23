@@ -27,14 +27,6 @@ namespace PdfGenerator
 			return fileContent.ToString();
 		}
 
-		public new void Add(IPrintable printable)
-		{
-			if (printable != null)
-			{
-				base.Add(printable);
-			}
-		}
-
 		public static Printables LoadFromFiles(string printingRulesFilePath)
 		{
 			var printablesProvider = new PrintablesProvider();

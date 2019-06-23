@@ -28,9 +28,8 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			this.components = new System.ComponentModel.Container();
 			this.pMain = new System.Windows.Forms.Panel();
-			this.pCanvas = new System.Windows.Forms.Panel();
-			this.pbCanvas = new System.Windows.Forms.PictureBox();
 			this.pToolbar = new System.Windows.Forms.Panel();
 			this.gbTools = new System.Windows.Forms.GroupBox();
 			this.nudImageHeight = new System.Windows.Forms.NumericUpDown();
@@ -45,7 +44,6 @@
 			this.nudLineWidth = new System.Windows.Forms.NumericUpDown();
 			this.pForeColor = new System.Windows.Forms.Panel();
 			this.rbEllipse = new System.Windows.Forms.RadioButton();
-			this.rbText = new System.Windows.Forms.RadioButton();
 			this.rbRectangle = new System.Windows.Forms.RadioButton();
 			this.msMenu = new System.Windows.Forms.MenuStrip();
 			this.tsmiFile = new System.Windows.Forms.ToolStripMenuItem();
@@ -57,50 +55,54 @@
 			this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
 			this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
 			this.fontDialog1 = new System.Windows.Forms.FontDialog();
-			this.rbImage = new System.Windows.Forms.RadioButton();
+			this.lvPrintables = new System.Windows.Forms.ListView();
+			this.chPrintable = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.chX = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.chY = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.chWidth = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.chHeight = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.chOther = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+			this.tssLabel = new System.Windows.Forms.ToolStripStatusLabel();
+			this.splitter1 = new System.Windows.Forms.Splitter();
+			this.pCanvas = new System.Windows.Forms.Panel();
+			this.pbCanvas = new System.Windows.Forms.PictureBox();
+			this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+			this.tsmiDeletePrintable = new System.Windows.Forms.ToolStripMenuItem();
+			this.tsmiPrint = new System.Windows.Forms.ToolStripMenuItem();
+			this.tabControl = new System.Windows.Forms.TabControl();
+			this.tpText = new System.Windows.Forms.TabPage();
+			this.tpShapes = new System.Windows.Forms.TabPage();
+			this.tpImage = new System.Windows.Forms.TabPage();
+			this.lblWidth = new System.Windows.Forms.Label();
+			this.lblHeight = new System.Windows.Forms.Label();
 			this.pMain.SuspendLayout();
-			this.pCanvas.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.pbCanvas)).BeginInit();
 			this.pToolbar.SuspendLayout();
 			this.gbTools.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.nudImageHeight)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.nudImageWidth)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.nudLineWidth)).BeginInit();
 			this.msMenu.SuspendLayout();
+			this.statusStrip1.SuspendLayout();
+			this.pCanvas.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.pbCanvas)).BeginInit();
+			this.contextMenuStrip1.SuspendLayout();
+			this.tabControl.SuspendLayout();
+			this.tpText.SuspendLayout();
+			this.tpShapes.SuspendLayout();
+			this.tpImage.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// pMain
 			// 
 			this.pMain.Controls.Add(this.pCanvas);
+			this.pMain.Controls.Add(this.splitter1);
 			this.pMain.Controls.Add(this.pToolbar);
 			this.pMain.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.pMain.Location = new System.Drawing.Point(0, 0);
 			this.pMain.Name = "pMain";
 			this.pMain.Size = new System.Drawing.Size(1046, 554);
 			this.pMain.TabIndex = 0;
-			// 
-			// pCanvas
-			// 
-			this.pCanvas.AutoScroll = true;
-			this.pCanvas.Controls.Add(this.pbCanvas);
-			this.pCanvas.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.pCanvas.Location = new System.Drawing.Point(0, 0);
-			this.pCanvas.Name = "pCanvas";
-			this.pCanvas.Size = new System.Drawing.Size(765, 554);
-			this.pCanvas.TabIndex = 1;
-			// 
-			// pbCanvas
-			// 
-			this.pbCanvas.BackColor = System.Drawing.Color.White;
-			this.pbCanvas.Location = new System.Drawing.Point(0, 0);
-			this.pbCanvas.Name = "pbCanvas";
-			this.pbCanvas.Size = new System.Drawing.Size(2480, 3508);
-			this.pbCanvas.TabIndex = 0;
-			this.pbCanvas.TabStop = false;
-			this.pbCanvas.Paint += new System.Windows.Forms.PaintEventHandler(this.pbCanvas_Paint);
-			this.pbCanvas.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pbCanvas_MouseDown);
-			this.pbCanvas.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pbCanvas_MouseMove);
-			this.pbCanvas.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pbCanvas_MouseUp);
 			// 
 			// pToolbar
 			// 
@@ -114,21 +116,9 @@
 			// 
 			// gbTools
 			// 
-			this.gbTools.Controls.Add(this.rbImage);
-			this.gbTools.Controls.Add(this.nudImageHeight);
-			this.gbTools.Controls.Add(this.nudImageWidth);
-			this.gbTools.Controls.Add(this.btnLoadImage);
-			this.gbTools.Controls.Add(this.tbText);
-			this.gbTools.Controls.Add(this.btnFont);
-			this.gbTools.Controls.Add(this.cbFontSize);
-			this.gbTools.Controls.Add(this.lblFont);
-			this.gbTools.Controls.Add(this.lblLineWidth);
-			this.gbTools.Controls.Add(this.lblLineColor);
-			this.gbTools.Controls.Add(this.nudLineWidth);
-			this.gbTools.Controls.Add(this.pForeColor);
-			this.gbTools.Controls.Add(this.rbEllipse);
-			this.gbTools.Controls.Add(this.rbText);
-			this.gbTools.Controls.Add(this.rbRectangle);
+			this.gbTools.Controls.Add(this.tabControl);
+			this.gbTools.Controls.Add(this.statusStrip1);
+			this.gbTools.Controls.Add(this.lvPrintables);
 			this.gbTools.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.gbTools.Location = new System.Drawing.Point(0, 24);
 			this.gbTools.Name = "gbTools";
@@ -139,7 +129,7 @@
 			// 
 			// nudImageHeight
 			// 
-			this.nudImageHeight.Location = new System.Drawing.Point(159, 213);
+			this.nudImageHeight.Location = new System.Drawing.Point(161, 26);
 			this.nudImageHeight.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -162,7 +152,7 @@
 			// 
 			// nudImageWidth
 			// 
-			this.nudImageWidth.Location = new System.Drawing.Point(98, 213);
+			this.nudImageWidth.Location = new System.Drawing.Point(100, 26);
 			this.nudImageWidth.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -185,26 +175,29 @@
 			// 
 			// btnLoadImage
 			// 
-			this.btnLoadImage.Location = new System.Drawing.Point(53, 210);
+			this.btnLoadImage.Location = new System.Drawing.Point(4, 25);
 			this.btnLoadImage.Name = "btnLoadImage";
-			this.btnLoadImage.Size = new System.Drawing.Size(27, 23);
+			this.btnLoadImage.Size = new System.Drawing.Size(91, 23);
 			this.btnLoadImage.TabIndex = 13;
-			this.btnLoadImage.Text = "...";
+			this.btnLoadImage.Text = "Select image";
 			this.btnLoadImage.UseVisualStyleBackColor = true;
 			this.btnLoadImage.Click += new System.EventHandler(this.btnLoadImage_Click);
 			// 
 			// tbText
 			// 
-			this.tbText.Enabled = false;
-			this.tbText.Location = new System.Drawing.Point(53, 138);
+			this.tbText.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbText.Location = new System.Drawing.Point(6, 37);
+			this.tbText.Multiline = true;
 			this.tbText.Name = "tbText";
-			this.tbText.Size = new System.Drawing.Size(219, 20);
+			this.tbText.Size = new System.Drawing.Size(252, 148);
 			this.tbText.TabIndex = 11;
 			this.tbText.TextChanged += new System.EventHandler(this.tbText_TextChanged);
 			// 
 			// btnFont
 			// 
-			this.btnFont.Location = new System.Drawing.Point(38, 109);
+			this.btnFont.Location = new System.Drawing.Point(37, 8);
 			this.btnFont.Name = "btnFont";
 			this.btnFont.Size = new System.Drawing.Size(23, 23);
 			this.btnFont.TabIndex = 10;
@@ -231,7 +224,7 @@
             "28",
             "36",
             "72"});
-			this.cbFontSize.Location = new System.Drawing.Point(63, 110);
+			this.cbFontSize.Location = new System.Drawing.Point(62, 9);
 			this.cbFontSize.Name = "cbFontSize";
 			this.cbFontSize.Size = new System.Drawing.Size(39, 21);
 			this.cbFontSize.TabIndex = 9;
@@ -241,7 +234,7 @@
 			// lblFont
 			// 
 			this.lblFont.AutoSize = true;
-			this.lblFont.Location = new System.Drawing.Point(4, 114);
+			this.lblFont.Location = new System.Drawing.Point(3, 13);
 			this.lblFont.Name = "lblFont";
 			this.lblFont.Size = new System.Drawing.Size(28, 13);
 			this.lblFont.TabIndex = 8;
@@ -250,7 +243,7 @@
 			// lblLineWidth
 			// 
 			this.lblLineWidth.AutoSize = true;
-			this.lblLineWidth.Location = new System.Drawing.Point(132, 55);
+			this.lblLineWidth.Location = new System.Drawing.Point(132, 52);
 			this.lblLineWidth.Name = "lblLineWidth";
 			this.lblLineWidth.Size = new System.Drawing.Size(55, 13);
 			this.lblLineWidth.TabIndex = 7;
@@ -259,7 +252,7 @@
 			// lblLineColor
 			// 
 			this.lblLineColor.AutoSize = true;
-			this.lblLineColor.Location = new System.Drawing.Point(6, 55);
+			this.lblLineColor.Location = new System.Drawing.Point(6, 52);
 			this.lblLineColor.Name = "lblLineColor";
 			this.lblLineColor.Size = new System.Drawing.Size(53, 13);
 			this.lblLineColor.TabIndex = 6;
@@ -267,7 +260,7 @@
 			// 
 			// nudLineWidth
 			// 
-			this.nudLineWidth.Location = new System.Drawing.Point(191, 53);
+			this.nudLineWidth.Location = new System.Drawing.Point(191, 50);
 			this.nudLineWidth.Minimum = new decimal(new int[] {
             1,
             0,
@@ -286,7 +279,7 @@
 			// 
 			this.pForeColor.BackColor = System.Drawing.Color.Black;
 			this.pForeColor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.pForeColor.Location = new System.Drawing.Point(65, 55);
+			this.pForeColor.Location = new System.Drawing.Point(65, 52);
 			this.pForeColor.Name = "pForeColor";
 			this.pForeColor.Size = new System.Drawing.Size(15, 15);
 			this.pForeColor.TabIndex = 4;
@@ -297,25 +290,12 @@
 			this.rbEllipse.Appearance = System.Windows.Forms.Appearance.Button;
 			this.rbEllipse.AutoSize = true;
 			this.rbEllipse.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-			this.rbEllipse.Location = new System.Drawing.Point(78, 19);
+			this.rbEllipse.Location = new System.Drawing.Point(78, 16);
 			this.rbEllipse.Name = "rbEllipse";
 			this.rbEllipse.Size = new System.Drawing.Size(47, 23);
 			this.rbEllipse.TabIndex = 3;
 			this.rbEllipse.Text = "Ellipse";
 			this.rbEllipse.UseVisualStyleBackColor = true;
-			// 
-			// rbText
-			// 
-			this.rbText.Appearance = System.Windows.Forms.Appearance.Button;
-			this.rbText.AutoSize = true;
-			this.rbText.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-			this.rbText.Location = new System.Drawing.Point(9, 138);
-			this.rbText.Name = "rbText";
-			this.rbText.Size = new System.Drawing.Size(38, 23);
-			this.rbText.TabIndex = 2;
-			this.rbText.Text = "Text";
-			this.rbText.UseVisualStyleBackColor = true;
-			this.rbText.CheckedChanged += new System.EventHandler(this.rbText_CheckedChanged);
 			// 
 			// rbRectangle
 			// 
@@ -323,7 +303,7 @@
 			this.rbRectangle.AutoSize = true;
 			this.rbRectangle.Checked = true;
 			this.rbRectangle.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-			this.rbRectangle.Location = new System.Drawing.Point(6, 19);
+			this.rbRectangle.Location = new System.Drawing.Point(6, 16);
 			this.rbRectangle.Name = "rbRectangle";
 			this.rbRectangle.Size = new System.Drawing.Size(66, 23);
 			this.rbRectangle.TabIndex = 1;
@@ -346,6 +326,7 @@
 			this.tsmiFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmi_Load,
             this.tsmi_Save,
+            this.tsmiPrint,
             this.tssSeparator,
             this.tsmiExit});
 			this.tsmiFile.Name = "tsmiFile";
@@ -355,26 +336,26 @@
 			// tsmi_Load
 			// 
 			this.tsmi_Load.Name = "tsmi_Load";
-			this.tsmi_Load.Size = new System.Drawing.Size(100, 22);
+			this.tsmi_Load.Size = new System.Drawing.Size(180, 22);
 			this.tsmi_Load.Text = "Load";
 			this.tsmi_Load.Click += new System.EventHandler(this.tsmi_Load_Click);
 			// 
 			// tsmi_Save
 			// 
 			this.tsmi_Save.Name = "tsmi_Save";
-			this.tsmi_Save.Size = new System.Drawing.Size(100, 22);
+			this.tsmi_Save.Size = new System.Drawing.Size(180, 22);
 			this.tsmi_Save.Text = "Save";
 			this.tsmi_Save.Click += new System.EventHandler(this.tsmi_Save_Click);
 			// 
 			// tssSeparator
 			// 
 			this.tssSeparator.Name = "tssSeparator";
-			this.tssSeparator.Size = new System.Drawing.Size(97, 6);
+			this.tssSeparator.Size = new System.Drawing.Size(177, 6);
 			// 
 			// tsmiExit
 			// 
 			this.tsmiExit.Name = "tsmiExit";
-			this.tsmiExit.Size = new System.Drawing.Size(100, 22);
+			this.tsmiExit.Size = new System.Drawing.Size(180, 22);
 			this.tsmiExit.Text = "Exit";
 			this.tsmiExit.Click += new System.EventHandler(this.tsmiExit_Click);
 			// 
@@ -387,17 +368,201 @@
 			this.fontDialog1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
 			this.fontDialog1.ShowColor = true;
 			// 
-			// rbImage
+			// lvPrintables
 			// 
-			this.rbImage.Appearance = System.Windows.Forms.Appearance.Button;
-			this.rbImage.AutoSize = true;
-			this.rbImage.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-			this.rbImage.Location = new System.Drawing.Point(6, 210);
-			this.rbImage.Name = "rbImage";
-			this.rbImage.Size = new System.Drawing.Size(46, 23);
-			this.rbImage.TabIndex = 16;
-			this.rbImage.Text = "Image";
-			this.rbImage.UseVisualStyleBackColor = true;
+			this.lvPrintables.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.lvPrintables.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.chPrintable,
+            this.chX,
+            this.chY,
+            this.chWidth,
+            this.chHeight,
+            this.chOther});
+			this.lvPrintables.ContextMenuStrip = this.contextMenuStrip1;
+			this.lvPrintables.FullRowSelect = true;
+			this.lvPrintables.HideSelection = false;
+			this.lvPrintables.Location = new System.Drawing.Point(6, 306);
+			this.lvPrintables.Name = "lvPrintables";
+			this.lvPrintables.Size = new System.Drawing.Size(269, 191);
+			this.lvPrintables.TabIndex = 17;
+			this.lvPrintables.UseCompatibleStateImageBehavior = false;
+			this.lvPrintables.View = System.Windows.Forms.View.Details;
+			// 
+			// chPrintable
+			// 
+			this.chPrintable.Text = "Type";
+			// 
+			// chX
+			// 
+			this.chX.Text = "X";
+			this.chX.Width = 30;
+			// 
+			// chY
+			// 
+			this.chY.Text = "Y";
+			this.chY.Width = 30;
+			// 
+			// chWidth
+			// 
+			this.chWidth.Text = "Width";
+			this.chWidth.Width = 45;
+			// 
+			// chHeight
+			// 
+			this.chHeight.Text = "Height";
+			this.chHeight.Width = 45;
+			// 
+			// chOther
+			// 
+			this.chOther.Text = "Other";
+			this.chOther.Width = 300;
+			// 
+			// statusStrip1
+			// 
+			this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tssLabel});
+			this.statusStrip1.Location = new System.Drawing.Point(3, 505);
+			this.statusStrip1.Name = "statusStrip1";
+			this.statusStrip1.Size = new System.Drawing.Size(275, 22);
+			this.statusStrip1.TabIndex = 18;
+			this.statusStrip1.Text = "statusStrip1";
+			// 
+			// tssLabel
+			// 
+			this.tssLabel.Name = "tssLabel";
+			this.tssLabel.Size = new System.Drawing.Size(39, 17);
+			this.tssLabel.Text = "Ready";
+			// 
+			// splitter1
+			// 
+			this.splitter1.Dock = System.Windows.Forms.DockStyle.Right;
+			this.splitter1.Location = new System.Drawing.Point(762, 0);
+			this.splitter1.Name = "splitter1";
+			this.splitter1.Size = new System.Drawing.Size(3, 554);
+			this.splitter1.TabIndex = 1;
+			this.splitter1.TabStop = false;
+			// 
+			// pCanvas
+			// 
+			this.pCanvas.AutoScroll = true;
+			this.pCanvas.Controls.Add(this.pbCanvas);
+			this.pCanvas.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.pCanvas.Location = new System.Drawing.Point(0, 0);
+			this.pCanvas.Name = "pCanvas";
+			this.pCanvas.Size = new System.Drawing.Size(762, 554);
+			this.pCanvas.TabIndex = 2;
+			// 
+			// pbCanvas
+			// 
+			this.pbCanvas.BackColor = System.Drawing.Color.White;
+			this.pbCanvas.Location = new System.Drawing.Point(0, 0);
+			this.pbCanvas.Name = "pbCanvas";
+			this.pbCanvas.Size = new System.Drawing.Size(2480, 3508);
+			this.pbCanvas.TabIndex = 0;
+			this.pbCanvas.TabStop = false;
+			this.pbCanvas.Paint += new System.Windows.Forms.PaintEventHandler(this.pbCanvas_Paint);
+			this.pbCanvas.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pbCanvas_MouseDown);
+			this.pbCanvas.MouseLeave += new System.EventHandler(this.pbCanvas_MouseLeave);
+			this.pbCanvas.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pbCanvas_MouseMove);
+			this.pbCanvas.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pbCanvas_MouseUp);
+			// 
+			// contextMenuStrip1
+			// 
+			this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiDeletePrintable});
+			this.contextMenuStrip1.Name = "contextMenuStrip1";
+			this.contextMenuStrip1.Size = new System.Drawing.Size(108, 26);
+			// 
+			// tsmiDeletePrintable
+			// 
+			this.tsmiDeletePrintable.Name = "tsmiDeletePrintable";
+			this.tsmiDeletePrintable.Size = new System.Drawing.Size(107, 22);
+			this.tsmiDeletePrintable.Text = "Delete";
+			this.tsmiDeletePrintable.Click += new System.EventHandler(this.tsmiDeletePrintable_Click);
+			// 
+			// tsmiPrint
+			// 
+			this.tsmiPrint.Name = "tsmiPrint";
+			this.tsmiPrint.Size = new System.Drawing.Size(180, 22);
+			this.tsmiPrint.Text = "Print as PDF";
+			this.tsmiPrint.Click += new System.EventHandler(this.tsmiPrint_Click);
+			// 
+			// tabControl
+			// 
+			this.tabControl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.tabControl.Controls.Add(this.tpText);
+			this.tabControl.Controls.Add(this.tpShapes);
+			this.tabControl.Controls.Add(this.tpImage);
+			this.tabControl.Location = new System.Drawing.Point(3, 19);
+			this.tabControl.Name = "tabControl";
+			this.tabControl.SelectedIndex = 0;
+			this.tabControl.Size = new System.Drawing.Size(272, 217);
+			this.tabControl.TabIndex = 19;
+			// 
+			// tpText
+			// 
+			this.tpText.Controls.Add(this.lblFont);
+			this.tpText.Controls.Add(this.cbFontSize);
+			this.tpText.Controls.Add(this.tbText);
+			this.tpText.Controls.Add(this.btnFont);
+			this.tpText.Location = new System.Drawing.Point(4, 22);
+			this.tpText.Name = "tpText";
+			this.tpText.Padding = new System.Windows.Forms.Padding(3);
+			this.tpText.Size = new System.Drawing.Size(264, 191);
+			this.tpText.TabIndex = 0;
+			this.tpText.Text = "Text";
+			this.tpText.UseVisualStyleBackColor = true;
+			// 
+			// tpShapes
+			// 
+			this.tpShapes.Controls.Add(this.rbRectangle);
+			this.tpShapes.Controls.Add(this.rbEllipse);
+			this.tpShapes.Controls.Add(this.pForeColor);
+			this.tpShapes.Controls.Add(this.nudLineWidth);
+			this.tpShapes.Controls.Add(this.lblLineColor);
+			this.tpShapes.Controls.Add(this.lblLineWidth);
+			this.tpShapes.Location = new System.Drawing.Point(4, 22);
+			this.tpShapes.Name = "tpShapes";
+			this.tpShapes.Padding = new System.Windows.Forms.Padding(3);
+			this.tpShapes.Size = new System.Drawing.Size(264, 191);
+			this.tpShapes.TabIndex = 1;
+			this.tpShapes.Text = "Shapes";
+			this.tpShapes.UseVisualStyleBackColor = true;
+			// 
+			// tpImage
+			// 
+			this.tpImage.Controls.Add(this.lblHeight);
+			this.tpImage.Controls.Add(this.lblWidth);
+			this.tpImage.Controls.Add(this.btnLoadImage);
+			this.tpImage.Controls.Add(this.nudImageWidth);
+			this.tpImage.Controls.Add(this.nudImageHeight);
+			this.tpImage.Location = new System.Drawing.Point(4, 22);
+			this.tpImage.Name = "tpImage";
+			this.tpImage.Size = new System.Drawing.Size(264, 191);
+			this.tpImage.TabIndex = 2;
+			this.tpImage.Text = "Image";
+			this.tpImage.UseVisualStyleBackColor = true;
+			// 
+			// lblWidth
+			// 
+			this.lblWidth.AutoSize = true;
+			this.lblWidth.Location = new System.Drawing.Point(97, 10);
+			this.lblWidth.Name = "lblWidth";
+			this.lblWidth.Size = new System.Drawing.Size(35, 13);
+			this.lblWidth.TabIndex = 16;
+			this.lblWidth.Text = "Width";
+			// 
+			// lblHeight
+			// 
+			this.lblHeight.AutoSize = true;
+			this.lblHeight.Location = new System.Drawing.Point(158, 10);
+			this.lblHeight.Name = "lblHeight";
+			this.lblHeight.Size = new System.Drawing.Size(38, 13);
+			this.lblHeight.TabIndex = 17;
+			this.lblHeight.Text = "Height";
 			// 
 			// MainForm
 			// 
@@ -411,8 +576,6 @@
 			this.Text = "Print page editor";
 			this.SizeChanged += new System.EventHandler(this.MainForm_SizeChanged);
 			this.pMain.ResumeLayout(false);
-			this.pCanvas.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.pbCanvas)).EndInit();
 			this.pToolbar.ResumeLayout(false);
 			this.pToolbar.PerformLayout();
 			this.gbTools.ResumeLayout(false);
@@ -422,6 +585,18 @@
 			((System.ComponentModel.ISupportInitialize)(this.nudLineWidth)).EndInit();
 			this.msMenu.ResumeLayout(false);
 			this.msMenu.PerformLayout();
+			this.statusStrip1.ResumeLayout(false);
+			this.statusStrip1.PerformLayout();
+			this.pCanvas.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.pbCanvas)).EndInit();
+			this.contextMenuStrip1.ResumeLayout(false);
+			this.tabControl.ResumeLayout(false);
+			this.tpText.ResumeLayout(false);
+			this.tpText.PerformLayout();
+			this.tpShapes.ResumeLayout(false);
+			this.tpShapes.PerformLayout();
+			this.tpImage.ResumeLayout(false);
+			this.tpImage.PerformLayout();
 			this.ResumeLayout(false);
 
 		}
@@ -429,8 +604,6 @@
 		#endregion
 
 		private System.Windows.Forms.Panel pMain;
-		private System.Windows.Forms.Panel pCanvas;
-		private System.Windows.Forms.PictureBox pbCanvas;
 		private System.Windows.Forms.Panel pToolbar;
 		private System.Windows.Forms.MenuStrip msMenu;
 		private System.Windows.Forms.ToolStripMenuItem tsmiFile;
@@ -440,7 +613,6 @@
 		private System.Windows.Forms.ToolStripMenuItem tsmiExit;
 		private System.Windows.Forms.GroupBox gbTools;
 		private System.Windows.Forms.RadioButton rbEllipse;
-		private System.Windows.Forms.RadioButton rbText;
 		private System.Windows.Forms.RadioButton rbRectangle;
 		private System.Windows.Forms.Panel pForeColor;
 		private System.Windows.Forms.ColorDialog colorDialog1;
@@ -457,7 +629,27 @@
 		private System.Windows.Forms.NumericUpDown nudImageHeight;
 		private System.Windows.Forms.NumericUpDown nudImageWidth;
 		private System.Windows.Forms.Button btnLoadImage;
-		private System.Windows.Forms.RadioButton rbImage;
+		private System.Windows.Forms.ListView lvPrintables;
+		private System.Windows.Forms.ColumnHeader chPrintable;
+		private System.Windows.Forms.ColumnHeader chX;
+		private System.Windows.Forms.ColumnHeader chY;
+		private System.Windows.Forms.ColumnHeader chWidth;
+		private System.Windows.Forms.ColumnHeader chHeight;
+		private System.Windows.Forms.ColumnHeader chOther;
+		private System.Windows.Forms.StatusStrip statusStrip1;
+		private System.Windows.Forms.ToolStripStatusLabel tssLabel;
+		private System.Windows.Forms.Panel pCanvas;
+		private System.Windows.Forms.PictureBox pbCanvas;
+		private System.Windows.Forms.Splitter splitter1;
+		private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+		private System.Windows.Forms.ToolStripMenuItem tsmiDeletePrintable;
+		private System.Windows.Forms.ToolStripMenuItem tsmiPrint;
+		private System.Windows.Forms.TabControl tabControl;
+		private System.Windows.Forms.TabPage tpText;
+		private System.Windows.Forms.TabPage tpShapes;
+		private System.Windows.Forms.TabPage tpImage;
+		private System.Windows.Forms.Label lblHeight;
+		private System.Windows.Forms.Label lblWidth;
 	}
 }
 

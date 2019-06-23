@@ -1,4 +1,5 @@
 ﻿using System.Drawing;
+using System.Windows.Forms;
 
 namespace PdfGenerator.Printable
 {
@@ -20,6 +21,14 @@ namespace PdfGenerator.Printable
 			{
 				return Size.Height;
 			}
+		}
+
+		public override ListViewItem ToListViewItem()
+		{
+			var result = base.ToListViewItem();
+			result.SubItems.Add(Width.ToString());
+			result.SubItems.Add(Height.ToString());
+			return result;
 		}
 	}
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Windows.Forms;
 
 namespace PdfGenerator.Printable
 {
@@ -45,6 +46,13 @@ namespace PdfGenerator.Printable
 		public override string ToString()
 		{
 			return $"<PrintImage {StrImageFilename}=\"{imageFilePath}\" {StrX}=\"{X}\" {StrY}=\"{Y}\" {StrWidth}=\"{Width}\" {StrHeight}=\"{Height}\" />";
+		}
+
+		public override ListViewItem ToListViewItem()
+		{
+			var result = base.ToListViewItem();
+			result.SubItems.Add(imageFilePath);
+			return result;
 		}
 	}
 }

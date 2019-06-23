@@ -1,4 +1,5 @@
 ﻿using System.Drawing;
+using System.Windows.Forms;
 
 namespace PdfGenerator.Printable
 {
@@ -45,5 +46,14 @@ namespace PdfGenerator.Printable
 		public abstract void DrawOnGraphics(Graphics graphics);
 
 		public new abstract string ToString();
+
+		public virtual ListViewItem ToListViewItem()
+		{
+			var result = new ListViewItem(GetType().Name);
+			result.SubItems.Add(X.ToString());
+			result.SubItems.Add(Y.ToString());
+			result.Tag = this;
+			return result;
+		}
 	}
 }
