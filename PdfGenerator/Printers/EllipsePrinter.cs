@@ -7,7 +7,7 @@ namespace PdfGenerator.Printers
 	{
 		public override void SpecificPrint(PdfEllipse pdfEllipse, Graphics graphics)
 		{
-			graphics.DrawRectangle(pdfEllipse.Pen, pdfEllipse.X, pdfEllipse.Y, pdfEllipse.Width, pdfEllipse.Height);
+			graphics.DrawEllipse(pdfEllipse.Pen, pdfEllipse.X, pdfEllipse.Y, pdfEllipse.Width, pdfEllipse.Height);
 		}
 	}
 }
