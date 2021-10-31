@@ -22,10 +22,10 @@ namespace PrintPageEditor
 		public MainForm()
 		{
 			InitializeComponent();
-			SetStyle(ControlStyles.DoubleBuffer, true);
-			SetStyle(ControlStyles.ResizeRedraw, true);
-			SetStyle(ControlStyles.AllPaintingInWmPaint, true);
-			SetStyle(ControlStyles.UserPaint, true);
+			//SetStyle(ControlStyles.DoubleBuffer, true);
+			//SetStyle(ControlStyles.ResizeRedraw, true);
+			//SetStyle(ControlStyles.AllPaintingInWmPaint, true);
+			//SetStyle(ControlStyles.UserPaint, true);
 
 			cbFontSize.SelectedIndex = 4;
 		}
@@ -37,14 +37,17 @@ namespace PrintPageEditor
 
 		private void pbCanvas_MouseDown(object sender, MouseEventArgs e)
 		{
-			if (e.Button == MouseButtons.Left)
+			if (tabControl.SelectedTab == tpShapes)
 			{
-				mouseDownLocation = e.Location;
-			}
-			else
-			{
-				mouseDownLocation = null;
-				temporarlyPrintable = null;
+				if (e.Button == MouseButtons.Left)
+				{
+					mouseDownLocation = e.Location;
+				}
+				else
+				{
+					mouseDownLocation = null;
+					temporarlyPrintable = null;
+				}
 			}
 		}
 
@@ -68,8 +71,8 @@ namespace PrintPageEditor
 				e.Graphics.DrawLine(new Pen(Color.Red), mouseX, 0, mouseX, pbCanvas.Height);
 			}
 
-			DrawPrintable(temporarlyPrintable, e);
 			printables.DrawOnGraphics(e.Graphics);
+			DrawPrintable(temporarlyPrintable, e);
 		}
 
 		private void DrawPrintable(IPrintable printable, PaintEventArgs e)
@@ -83,6 +86,14 @@ namespace PrintPageEditor
 
 		private void pbCanvas_MouseMove(object sender, MouseEventArgs e)
 		{
+			if (tabControl.SelectedTab == tpText || tabControl.SelectedTab == tpImage)
+			{
+				mouseDownLocation = e.Location;
+			}
+			else
+			{
+				mouseDownLocation = null;
+			}
 			mouseX = e.X;
 			mouseY = e.Y;
 			showHorizontalHelper = printables.Any(printable => printable.Y == mouseY);
@@ -143,6 +154,11 @@ namespace PrintPageEditor
 
 		private void pbCanvas_MouseUp(object sender, MouseEventArgs e)
 		{
+			if (e.Button != MouseButtons.Left)
+			{
+				return;
+			}
+
 			CreateNewObject(e.Location);
 			if (temporarlyPrintable != null)
 			{
@@ -173,6 +189,7 @@ namespace PrintPageEditor
 			{
 				fontName = fontDialog1.Font.Name;
 				fontColor = fontDialog1.Color;
+				cbFontSize.Text = fontDialog1.Font.Size.ToString();
 			}
 		}
 
@@ -260,12 +277,13 @@ namespace PrintPageEditor
 
 		private void RefreshScreen(bool forceSynchronousPaint = false)
 		{
+			pbCanvas.Invalidate();
 			// https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.control.invalidate?redirectedfrom=MSDN&view=netframework-4.8#System_Windows_Forms_Control_Invalidate
-			Invalidate(true);
-			if (forceSynchronousPaint)
-			{
-				Update();
-			}
+			//Invalidate(true);
+			//if (forceSynchronousPaint)
+			//{
+			Update();
+			//}
 		}
 	}
 }

@@ -30,31 +30,32 @@
 		{
 			this.components = new System.ComponentModel.Container();
 			this.pMain = new System.Windows.Forms.Panel();
+			this.pCanvas = new System.Windows.Forms.Panel();
+			this.pbCanvas = new System.Windows.Forms.PictureBox();
+			this.splitter1 = new System.Windows.Forms.Splitter();
 			this.pToolbar = new System.Windows.Forms.Panel();
 			this.gbTools = new System.Windows.Forms.GroupBox();
-			this.nudImageHeight = new System.Windows.Forms.NumericUpDown();
-			this.nudImageWidth = new System.Windows.Forms.NumericUpDown();
-			this.btnLoadImage = new System.Windows.Forms.Button();
+			this.tabControl = new System.Windows.Forms.TabControl();
+			this.tpText = new System.Windows.Forms.TabPage();
+			this.lblFont = new System.Windows.Forms.Label();
+			this.cbFontSize = new System.Windows.Forms.ComboBox();
 			this.tbText = new System.Windows.Forms.TextBox();
 			this.btnFont = new System.Windows.Forms.Button();
-			this.cbFontSize = new System.Windows.Forms.ComboBox();
-			this.lblFont = new System.Windows.Forms.Label();
-			this.lblLineWidth = new System.Windows.Forms.Label();
-			this.lblLineColor = new System.Windows.Forms.Label();
-			this.nudLineWidth = new System.Windows.Forms.NumericUpDown();
-			this.pForeColor = new System.Windows.Forms.Panel();
-			this.rbEllipse = new System.Windows.Forms.RadioButton();
+			this.tpShapes = new System.Windows.Forms.TabPage();
 			this.rbRectangle = new System.Windows.Forms.RadioButton();
-			this.msMenu = new System.Windows.Forms.MenuStrip();
-			this.tsmiFile = new System.Windows.Forms.ToolStripMenuItem();
-			this.tsmi_Load = new System.Windows.Forms.ToolStripMenuItem();
-			this.tsmi_Save = new System.Windows.Forms.ToolStripMenuItem();
-			this.tssSeparator = new System.Windows.Forms.ToolStripSeparator();
-			this.tsmiExit = new System.Windows.Forms.ToolStripMenuItem();
-			this.colorDialog1 = new System.Windows.Forms.ColorDialog();
-			this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-			this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-			this.fontDialog1 = new System.Windows.Forms.FontDialog();
+			this.rbEllipse = new System.Windows.Forms.RadioButton();
+			this.pForeColor = new System.Windows.Forms.Panel();
+			this.nudLineWidth = new System.Windows.Forms.NumericUpDown();
+			this.lblLineColor = new System.Windows.Forms.Label();
+			this.lblLineWidth = new System.Windows.Forms.Label();
+			this.tpImage = new System.Windows.Forms.TabPage();
+			this.lblHeight = new System.Windows.Forms.Label();
+			this.lblWidth = new System.Windows.Forms.Label();
+			this.btnLoadImage = new System.Windows.Forms.Button();
+			this.nudImageWidth = new System.Windows.Forms.NumericUpDown();
+			this.nudImageHeight = new System.Windows.Forms.NumericUpDown();
+			this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+			this.tssLabel = new System.Windows.Forms.ToolStripStatusLabel();
 			this.lvPrintables = new System.Windows.Forms.ListView();
 			this.chPrintable = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.chX = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -62,35 +63,34 @@
 			this.chWidth = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.chHeight = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.chOther = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-			this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-			this.tssLabel = new System.Windows.Forms.ToolStripStatusLabel();
-			this.splitter1 = new System.Windows.Forms.Splitter();
-			this.pCanvas = new System.Windows.Forms.Panel();
-			this.pbCanvas = new System.Windows.Forms.PictureBox();
 			this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
 			this.tsmiDeletePrintable = new System.Windows.Forms.ToolStripMenuItem();
+			this.msMenu = new System.Windows.Forms.MenuStrip();
+			this.tsmiFile = new System.Windows.Forms.ToolStripMenuItem();
+			this.tsmi_Load = new System.Windows.Forms.ToolStripMenuItem();
+			this.tsmi_Save = new System.Windows.Forms.ToolStripMenuItem();
 			this.tsmiPrint = new System.Windows.Forms.ToolStripMenuItem();
-			this.tabControl = new System.Windows.Forms.TabControl();
-			this.tpText = new System.Windows.Forms.TabPage();
-			this.tpShapes = new System.Windows.Forms.TabPage();
-			this.tpImage = new System.Windows.Forms.TabPage();
-			this.lblWidth = new System.Windows.Forms.Label();
-			this.lblHeight = new System.Windows.Forms.Label();
+			this.tssSeparator = new System.Windows.Forms.ToolStripSeparator();
+			this.tsmiExit = new System.Windows.Forms.ToolStripMenuItem();
+			this.colorDialog1 = new System.Windows.Forms.ColorDialog();
+			this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+			this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+			this.fontDialog1 = new System.Windows.Forms.FontDialog();
 			this.pMain.SuspendLayout();
-			this.pToolbar.SuspendLayout();
-			this.gbTools.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.nudImageHeight)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.nudImageWidth)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.nudLineWidth)).BeginInit();
-			this.msMenu.SuspendLayout();
-			this.statusStrip1.SuspendLayout();
 			this.pCanvas.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pbCanvas)).BeginInit();
-			this.contextMenuStrip1.SuspendLayout();
+			this.pToolbar.SuspendLayout();
+			this.gbTools.SuspendLayout();
 			this.tabControl.SuspendLayout();
 			this.tpText.SuspendLayout();
 			this.tpShapes.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.nudLineWidth)).BeginInit();
 			this.tpImage.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.nudImageWidth)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.nudImageHeight)).BeginInit();
+			this.statusStrip1.SuspendLayout();
+			this.contextMenuStrip1.SuspendLayout();
+			this.msMenu.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// pMain
@@ -103,6 +103,39 @@
 			this.pMain.Name = "pMain";
 			this.pMain.Size = new System.Drawing.Size(1046, 554);
 			this.pMain.TabIndex = 0;
+			// 
+			// pCanvas
+			// 
+			this.pCanvas.AutoScroll = true;
+			this.pCanvas.Controls.Add(this.pbCanvas);
+			this.pCanvas.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.pCanvas.Location = new System.Drawing.Point(0, 0);
+			this.pCanvas.Name = "pCanvas";
+			this.pCanvas.Size = new System.Drawing.Size(762, 554);
+			this.pCanvas.TabIndex = 2;
+			// 
+			// pbCanvas
+			// 
+			this.pbCanvas.BackColor = System.Drawing.Color.White;
+			this.pbCanvas.Location = new System.Drawing.Point(0, 0);
+			this.pbCanvas.Name = "pbCanvas";
+			this.pbCanvas.Size = new System.Drawing.Size(2480, 3508);
+			this.pbCanvas.TabIndex = 0;
+			this.pbCanvas.TabStop = false;
+			this.pbCanvas.Paint += new System.Windows.Forms.PaintEventHandler(this.pbCanvas_Paint);
+			this.pbCanvas.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pbCanvas_MouseDown);
+			this.pbCanvas.MouseLeave += new System.EventHandler(this.pbCanvas_MouseLeave);
+			this.pbCanvas.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pbCanvas_MouseMove);
+			this.pbCanvas.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pbCanvas_MouseUp);
+			// 
+			// splitter1
+			// 
+			this.splitter1.Dock = System.Windows.Forms.DockStyle.Right;
+			this.splitter1.Location = new System.Drawing.Point(762, 0);
+			this.splitter1.Name = "splitter1";
+			this.splitter1.Size = new System.Drawing.Size(3, 554);
+			this.splitter1.TabIndex = 1;
+			this.splitter1.TabStop = false;
 			// 
 			// pToolbar
 			// 
@@ -127,83 +160,41 @@
 			this.gbTools.TabStop = false;
 			this.gbTools.Text = "Tools";
 			// 
-			// nudImageHeight
+			// tabControl
 			// 
-			this.nudImageHeight.Location = new System.Drawing.Point(161, 26);
-			this.nudImageHeight.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-			this.nudImageHeight.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-			this.nudImageHeight.Name = "nudImageHeight";
-			this.nudImageHeight.Size = new System.Drawing.Size(55, 20);
-			this.nudImageHeight.TabIndex = 15;
-			this.nudImageHeight.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-			this.nudImageHeight.ValueChanged += new System.EventHandler(this.nudImageSizeChanged);
-			// 
-			// nudImageWidth
-			// 
-			this.nudImageWidth.Location = new System.Drawing.Point(100, 26);
-			this.nudImageWidth.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-			this.nudImageWidth.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-			this.nudImageWidth.Name = "nudImageWidth";
-			this.nudImageWidth.Size = new System.Drawing.Size(55, 20);
-			this.nudImageWidth.TabIndex = 14;
-			this.nudImageWidth.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-			this.nudImageWidth.ValueChanged += new System.EventHandler(this.nudImageSizeChanged);
-			// 
-			// btnLoadImage
-			// 
-			this.btnLoadImage.Location = new System.Drawing.Point(4, 25);
-			this.btnLoadImage.Name = "btnLoadImage";
-			this.btnLoadImage.Size = new System.Drawing.Size(91, 23);
-			this.btnLoadImage.TabIndex = 13;
-			this.btnLoadImage.Text = "Select image";
-			this.btnLoadImage.UseVisualStyleBackColor = true;
-			this.btnLoadImage.Click += new System.EventHandler(this.btnLoadImage_Click);
-			// 
-			// tbText
-			// 
-			this.tbText.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+			this.tabControl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.tbText.Location = new System.Drawing.Point(6, 37);
-			this.tbText.Multiline = true;
-			this.tbText.Name = "tbText";
-			this.tbText.Size = new System.Drawing.Size(252, 148);
-			this.tbText.TabIndex = 11;
-			this.tbText.TextChanged += new System.EventHandler(this.tbText_TextChanged);
+			this.tabControl.Controls.Add(this.tpText);
+			this.tabControl.Controls.Add(this.tpShapes);
+			this.tabControl.Controls.Add(this.tpImage);
+			this.tabControl.Location = new System.Drawing.Point(3, 19);
+			this.tabControl.Name = "tabControl";
+			this.tabControl.SelectedIndex = 0;
+			this.tabControl.Size = new System.Drawing.Size(272, 217);
+			this.tabControl.TabIndex = 19;
 			// 
-			// btnFont
+			// tpText
 			// 
-			this.btnFont.Location = new System.Drawing.Point(37, 8);
-			this.btnFont.Name = "btnFont";
-			this.btnFont.Size = new System.Drawing.Size(23, 23);
-			this.btnFont.TabIndex = 10;
-			this.btnFont.Text = "A";
-			this.btnFont.UseVisualStyleBackColor = true;
-			this.btnFont.Click += new System.EventHandler(this.btnFont_Click);
+			this.tpText.Controls.Add(this.lblFont);
+			this.tpText.Controls.Add(this.cbFontSize);
+			this.tpText.Controls.Add(this.tbText);
+			this.tpText.Controls.Add(this.btnFont);
+			this.tpText.Location = new System.Drawing.Point(4, 22);
+			this.tpText.Name = "tpText";
+			this.tpText.Padding = new System.Windows.Forms.Padding(3);
+			this.tpText.Size = new System.Drawing.Size(264, 191);
+			this.tpText.TabIndex = 0;
+			this.tpText.Text = "Text";
+			this.tpText.UseVisualStyleBackColor = true;
+			// 
+			// lblFont
+			// 
+			this.lblFont.AutoSize = true;
+			this.lblFont.Location = new System.Drawing.Point(3, 13);
+			this.lblFont.Name = "lblFont";
+			this.lblFont.Size = new System.Drawing.Size(28, 13);
+			this.lblFont.TabIndex = 8;
+			this.lblFont.Text = "Font";
 			// 
 			// cbFontSize
 			// 
@@ -231,32 +222,79 @@
 			this.cbFontSize.SelectedIndexChanged += new System.EventHandler(this.cbFontSize_SelectedIndexChanged);
 			this.cbFontSize.TextChanged += new System.EventHandler(this.cbFontSize_TextChanged);
 			// 
-			// lblFont
+			// tbText
 			// 
-			this.lblFont.AutoSize = true;
-			this.lblFont.Location = new System.Drawing.Point(3, 13);
-			this.lblFont.Name = "lblFont";
-			this.lblFont.Size = new System.Drawing.Size(28, 13);
-			this.lblFont.TabIndex = 8;
-			this.lblFont.Text = "Font";
+			this.tbText.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.tbText.Location = new System.Drawing.Point(6, 37);
+			this.tbText.Multiline = true;
+			this.tbText.Name = "tbText";
+			this.tbText.Size = new System.Drawing.Size(252, 148);
+			this.tbText.TabIndex = 11;
+			this.tbText.TextChanged += new System.EventHandler(this.tbText_TextChanged);
 			// 
-			// lblLineWidth
+			// btnFont
 			// 
-			this.lblLineWidth.AutoSize = true;
-			this.lblLineWidth.Location = new System.Drawing.Point(132, 52);
-			this.lblLineWidth.Name = "lblLineWidth";
-			this.lblLineWidth.Size = new System.Drawing.Size(55, 13);
-			this.lblLineWidth.TabIndex = 7;
-			this.lblLineWidth.Text = "Line width";
+			this.btnFont.Location = new System.Drawing.Point(37, 8);
+			this.btnFont.Name = "btnFont";
+			this.btnFont.Size = new System.Drawing.Size(23, 23);
+			this.btnFont.TabIndex = 10;
+			this.btnFont.Text = "A";
+			this.btnFont.UseVisualStyleBackColor = true;
+			this.btnFont.Click += new System.EventHandler(this.btnFont_Click);
 			// 
-			// lblLineColor
+			// tpShapes
 			// 
-			this.lblLineColor.AutoSize = true;
-			this.lblLineColor.Location = new System.Drawing.Point(6, 52);
-			this.lblLineColor.Name = "lblLineColor";
-			this.lblLineColor.Size = new System.Drawing.Size(53, 13);
-			this.lblLineColor.TabIndex = 6;
-			this.lblLineColor.Text = "Line color";
+			this.tpShapes.Controls.Add(this.rbRectangle);
+			this.tpShapes.Controls.Add(this.rbEllipse);
+			this.tpShapes.Controls.Add(this.pForeColor);
+			this.tpShapes.Controls.Add(this.nudLineWidth);
+			this.tpShapes.Controls.Add(this.lblLineColor);
+			this.tpShapes.Controls.Add(this.lblLineWidth);
+			this.tpShapes.Location = new System.Drawing.Point(4, 22);
+			this.tpShapes.Name = "tpShapes";
+			this.tpShapes.Padding = new System.Windows.Forms.Padding(3);
+			this.tpShapes.Size = new System.Drawing.Size(264, 191);
+			this.tpShapes.TabIndex = 1;
+			this.tpShapes.Text = "Shapes";
+			this.tpShapes.UseVisualStyleBackColor = true;
+			// 
+			// rbRectangle
+			// 
+			this.rbRectangle.Appearance = System.Windows.Forms.Appearance.Button;
+			this.rbRectangle.AutoSize = true;
+			this.rbRectangle.Checked = true;
+			this.rbRectangle.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+			this.rbRectangle.Location = new System.Drawing.Point(6, 16);
+			this.rbRectangle.Name = "rbRectangle";
+			this.rbRectangle.Size = new System.Drawing.Size(66, 23);
+			this.rbRectangle.TabIndex = 1;
+			this.rbRectangle.TabStop = true;
+			this.rbRectangle.Text = "Rectangle";
+			this.rbRectangle.UseVisualStyleBackColor = true;
+			// 
+			// rbEllipse
+			// 
+			this.rbEllipse.Appearance = System.Windows.Forms.Appearance.Button;
+			this.rbEllipse.AutoSize = true;
+			this.rbEllipse.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+			this.rbEllipse.Location = new System.Drawing.Point(78, 16);
+			this.rbEllipse.Name = "rbEllipse";
+			this.rbEllipse.Size = new System.Drawing.Size(47, 23);
+			this.rbEllipse.TabIndex = 3;
+			this.rbEllipse.Text = "Ellipse";
+			this.rbEllipse.UseVisualStyleBackColor = true;
+			// 
+			// pForeColor
+			// 
+			this.pForeColor.BackColor = System.Drawing.Color.Black;
+			this.pForeColor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.pForeColor.Location = new System.Drawing.Point(65, 52);
+			this.pForeColor.Name = "pForeColor";
+			this.pForeColor.Size = new System.Drawing.Size(15, 15);
+			this.pForeColor.TabIndex = 4;
+			this.pForeColor.DoubleClick += new System.EventHandler(this.pForeColor_DoubleClick);
 			// 
 			// nudLineWidth
 			// 
@@ -275,98 +313,127 @@
             0,
             0});
 			// 
-			// pForeColor
+			// lblLineColor
 			// 
-			this.pForeColor.BackColor = System.Drawing.Color.Black;
-			this.pForeColor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.pForeColor.Location = new System.Drawing.Point(65, 52);
-			this.pForeColor.Name = "pForeColor";
-			this.pForeColor.Size = new System.Drawing.Size(15, 15);
-			this.pForeColor.TabIndex = 4;
-			this.pForeColor.DoubleClick += new System.EventHandler(this.pForeColor_DoubleClick);
+			this.lblLineColor.AutoSize = true;
+			this.lblLineColor.Location = new System.Drawing.Point(6, 52);
+			this.lblLineColor.Name = "lblLineColor";
+			this.lblLineColor.Size = new System.Drawing.Size(53, 13);
+			this.lblLineColor.TabIndex = 6;
+			this.lblLineColor.Text = "Line color";
 			// 
-			// rbEllipse
+			// lblLineWidth
 			// 
-			this.rbEllipse.Appearance = System.Windows.Forms.Appearance.Button;
-			this.rbEllipse.AutoSize = true;
-			this.rbEllipse.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-			this.rbEllipse.Location = new System.Drawing.Point(78, 16);
-			this.rbEllipse.Name = "rbEllipse";
-			this.rbEllipse.Size = new System.Drawing.Size(47, 23);
-			this.rbEllipse.TabIndex = 3;
-			this.rbEllipse.Text = "Ellipse";
-			this.rbEllipse.UseVisualStyleBackColor = true;
+			this.lblLineWidth.AutoSize = true;
+			this.lblLineWidth.Location = new System.Drawing.Point(132, 52);
+			this.lblLineWidth.Name = "lblLineWidth";
+			this.lblLineWidth.Size = new System.Drawing.Size(55, 13);
+			this.lblLineWidth.TabIndex = 7;
+			this.lblLineWidth.Text = "Line width";
 			// 
-			// rbRectangle
+			// tpImage
 			// 
-			this.rbRectangle.Appearance = System.Windows.Forms.Appearance.Button;
-			this.rbRectangle.AutoSize = true;
-			this.rbRectangle.Checked = true;
-			this.rbRectangle.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-			this.rbRectangle.Location = new System.Drawing.Point(6, 16);
-			this.rbRectangle.Name = "rbRectangle";
-			this.rbRectangle.Size = new System.Drawing.Size(66, 23);
-			this.rbRectangle.TabIndex = 1;
-			this.rbRectangle.TabStop = true;
-			this.rbRectangle.Text = "Rectangle";
-			this.rbRectangle.UseVisualStyleBackColor = true;
+			this.tpImage.Controls.Add(this.lblHeight);
+			this.tpImage.Controls.Add(this.lblWidth);
+			this.tpImage.Controls.Add(this.btnLoadImage);
+			this.tpImage.Controls.Add(this.nudImageWidth);
+			this.tpImage.Controls.Add(this.nudImageHeight);
+			this.tpImage.Location = new System.Drawing.Point(4, 22);
+			this.tpImage.Name = "tpImage";
+			this.tpImage.Size = new System.Drawing.Size(264, 191);
+			this.tpImage.TabIndex = 2;
+			this.tpImage.Text = "Image";
+			this.tpImage.UseVisualStyleBackColor = true;
 			// 
-			// msMenu
+			// lblHeight
 			// 
-			this.msMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmiFile});
-			this.msMenu.Location = new System.Drawing.Point(0, 0);
-			this.msMenu.Name = "msMenu";
-			this.msMenu.Size = new System.Drawing.Size(281, 24);
-			this.msMenu.TabIndex = 0;
-			this.msMenu.Text = "Menu";
+			this.lblHeight.AutoSize = true;
+			this.lblHeight.Location = new System.Drawing.Point(158, 10);
+			this.lblHeight.Name = "lblHeight";
+			this.lblHeight.Size = new System.Drawing.Size(38, 13);
+			this.lblHeight.TabIndex = 17;
+			this.lblHeight.Text = "Height";
 			// 
-			// tsmiFile
+			// lblWidth
 			// 
-			this.tsmiFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmi_Load,
-            this.tsmi_Save,
-            this.tsmiPrint,
-            this.tssSeparator,
-            this.tsmiExit});
-			this.tsmiFile.Name = "tsmiFile";
-			this.tsmiFile.Size = new System.Drawing.Size(37, 20);
-			this.tsmiFile.Text = "File";
+			this.lblWidth.AutoSize = true;
+			this.lblWidth.Location = new System.Drawing.Point(97, 10);
+			this.lblWidth.Name = "lblWidth";
+			this.lblWidth.Size = new System.Drawing.Size(35, 13);
+			this.lblWidth.TabIndex = 16;
+			this.lblWidth.Text = "Width";
 			// 
-			// tsmi_Load
+			// btnLoadImage
 			// 
-			this.tsmi_Load.Name = "tsmi_Load";
-			this.tsmi_Load.Size = new System.Drawing.Size(180, 22);
-			this.tsmi_Load.Text = "Load";
-			this.tsmi_Load.Click += new System.EventHandler(this.tsmi_Load_Click);
+			this.btnLoadImage.Location = new System.Drawing.Point(4, 25);
+			this.btnLoadImage.Name = "btnLoadImage";
+			this.btnLoadImage.Size = new System.Drawing.Size(91, 23);
+			this.btnLoadImage.TabIndex = 13;
+			this.btnLoadImage.Text = "Select image";
+			this.btnLoadImage.UseVisualStyleBackColor = true;
+			this.btnLoadImage.Click += new System.EventHandler(this.btnLoadImage_Click);
 			// 
-			// tsmi_Save
+			// nudImageWidth
 			// 
-			this.tsmi_Save.Name = "tsmi_Save";
-			this.tsmi_Save.Size = new System.Drawing.Size(180, 22);
-			this.tsmi_Save.Text = "Save";
-			this.tsmi_Save.Click += new System.EventHandler(this.tsmi_Save_Click);
+			this.nudImageWidth.Location = new System.Drawing.Point(100, 26);
+			this.nudImageWidth.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+			this.nudImageWidth.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+			this.nudImageWidth.Name = "nudImageWidth";
+			this.nudImageWidth.Size = new System.Drawing.Size(55, 20);
+			this.nudImageWidth.TabIndex = 14;
+			this.nudImageWidth.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+			this.nudImageWidth.ValueChanged += new System.EventHandler(this.nudImageSizeChanged);
 			// 
-			// tssSeparator
+			// nudImageHeight
 			// 
-			this.tssSeparator.Name = "tssSeparator";
-			this.tssSeparator.Size = new System.Drawing.Size(177, 6);
+			this.nudImageHeight.Location = new System.Drawing.Point(161, 26);
+			this.nudImageHeight.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+			this.nudImageHeight.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+			this.nudImageHeight.Name = "nudImageHeight";
+			this.nudImageHeight.Size = new System.Drawing.Size(55, 20);
+			this.nudImageHeight.TabIndex = 15;
+			this.nudImageHeight.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+			this.nudImageHeight.ValueChanged += new System.EventHandler(this.nudImageSizeChanged);
 			// 
-			// tsmiExit
+			// statusStrip1
 			// 
-			this.tsmiExit.Name = "tsmiExit";
-			this.tsmiExit.Size = new System.Drawing.Size(180, 22);
-			this.tsmiExit.Text = "Exit";
-			this.tsmiExit.Click += new System.EventHandler(this.tsmiExit_Click);
+			this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tssLabel});
+			this.statusStrip1.Location = new System.Drawing.Point(3, 505);
+			this.statusStrip1.Name = "statusStrip1";
+			this.statusStrip1.Size = new System.Drawing.Size(275, 22);
+			this.statusStrip1.TabIndex = 18;
+			this.statusStrip1.Text = "statusStrip1";
 			// 
-			// openFileDialog1
+			// tssLabel
 			// 
-			this.openFileDialog1.FileName = "openFileDialog1";
-			// 
-			// fontDialog1
-			// 
-			this.fontDialog1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-			this.fontDialog1.ShowColor = true;
+			this.tssLabel.Name = "tssLabel";
+			this.tssLabel.Size = new System.Drawing.Size(39, 17);
+			this.tssLabel.Text = "Ready";
 			// 
 			// lvPrintables
 			// 
@@ -419,55 +486,6 @@
 			this.chOther.Text = "Other";
 			this.chOther.Width = 300;
 			// 
-			// statusStrip1
-			// 
-			this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tssLabel});
-			this.statusStrip1.Location = new System.Drawing.Point(3, 505);
-			this.statusStrip1.Name = "statusStrip1";
-			this.statusStrip1.Size = new System.Drawing.Size(275, 22);
-			this.statusStrip1.TabIndex = 18;
-			this.statusStrip1.Text = "statusStrip1";
-			// 
-			// tssLabel
-			// 
-			this.tssLabel.Name = "tssLabel";
-			this.tssLabel.Size = new System.Drawing.Size(39, 17);
-			this.tssLabel.Text = "Ready";
-			// 
-			// splitter1
-			// 
-			this.splitter1.Dock = System.Windows.Forms.DockStyle.Right;
-			this.splitter1.Location = new System.Drawing.Point(762, 0);
-			this.splitter1.Name = "splitter1";
-			this.splitter1.Size = new System.Drawing.Size(3, 554);
-			this.splitter1.TabIndex = 1;
-			this.splitter1.TabStop = false;
-			// 
-			// pCanvas
-			// 
-			this.pCanvas.AutoScroll = true;
-			this.pCanvas.Controls.Add(this.pbCanvas);
-			this.pCanvas.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.pCanvas.Location = new System.Drawing.Point(0, 0);
-			this.pCanvas.Name = "pCanvas";
-			this.pCanvas.Size = new System.Drawing.Size(762, 554);
-			this.pCanvas.TabIndex = 2;
-			// 
-			// pbCanvas
-			// 
-			this.pbCanvas.BackColor = System.Drawing.Color.White;
-			this.pbCanvas.Location = new System.Drawing.Point(0, 0);
-			this.pbCanvas.Name = "pbCanvas";
-			this.pbCanvas.Size = new System.Drawing.Size(2480, 3508);
-			this.pbCanvas.TabIndex = 0;
-			this.pbCanvas.TabStop = false;
-			this.pbCanvas.Paint += new System.Windows.Forms.PaintEventHandler(this.pbCanvas_Paint);
-			this.pbCanvas.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pbCanvas_MouseDown);
-			this.pbCanvas.MouseLeave += new System.EventHandler(this.pbCanvas_MouseLeave);
-			this.pbCanvas.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pbCanvas_MouseMove);
-			this.pbCanvas.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pbCanvas_MouseUp);
-			// 
 			// contextMenuStrip1
 			// 
 			this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -482,87 +500,74 @@
 			this.tsmiDeletePrintable.Text = "Delete";
 			this.tsmiDeletePrintable.Click += new System.EventHandler(this.tsmiDeletePrintable_Click);
 			// 
+			// msMenu
+			// 
+			this.msMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiFile});
+			this.msMenu.Location = new System.Drawing.Point(0, 0);
+			this.msMenu.Name = "msMenu";
+			this.msMenu.Size = new System.Drawing.Size(281, 24);
+			this.msMenu.TabIndex = 0;
+			this.msMenu.Text = "Menu";
+			// 
+			// tsmiFile
+			// 
+			this.tsmiFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmi_Load,
+            this.tsmi_Save,
+            this.tsmiPrint,
+            this.tssSeparator,
+            this.tsmiExit});
+			this.tsmiFile.Name = "tsmiFile";
+			this.tsmiFile.Size = new System.Drawing.Size(37, 20);
+			this.tsmiFile.Text = "File";
+			// 
+			// tsmi_Load
+			// 
+			this.tsmi_Load.Name = "tsmi_Load";
+			this.tsmi_Load.Size = new System.Drawing.Size(137, 22);
+			this.tsmi_Load.Text = "Load";
+			this.tsmi_Load.Click += new System.EventHandler(this.tsmi_Load_Click);
+			// 
+			// tsmi_Save
+			// 
+			this.tsmi_Save.Name = "tsmi_Save";
+			this.tsmi_Save.Size = new System.Drawing.Size(137, 22);
+			this.tsmi_Save.Text = "Save";
+			this.tsmi_Save.Click += new System.EventHandler(this.tsmi_Save_Click);
+			// 
 			// tsmiPrint
 			// 
 			this.tsmiPrint.Name = "tsmiPrint";
-			this.tsmiPrint.Size = new System.Drawing.Size(180, 22);
+			this.tsmiPrint.Size = new System.Drawing.Size(137, 22);
 			this.tsmiPrint.Text = "Print as PDF";
 			this.tsmiPrint.Click += new System.EventHandler(this.tsmiPrint_Click);
 			// 
-			// tabControl
+			// tssSeparator
 			// 
-			this.tabControl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.tabControl.Controls.Add(this.tpText);
-			this.tabControl.Controls.Add(this.tpShapes);
-			this.tabControl.Controls.Add(this.tpImage);
-			this.tabControl.Location = new System.Drawing.Point(3, 19);
-			this.tabControl.Name = "tabControl";
-			this.tabControl.SelectedIndex = 0;
-			this.tabControl.Size = new System.Drawing.Size(272, 217);
-			this.tabControl.TabIndex = 19;
+			this.tssSeparator.Name = "tssSeparator";
+			this.tssSeparator.Size = new System.Drawing.Size(134, 6);
 			// 
-			// tpText
+			// tsmiExit
 			// 
-			this.tpText.Controls.Add(this.lblFont);
-			this.tpText.Controls.Add(this.cbFontSize);
-			this.tpText.Controls.Add(this.tbText);
-			this.tpText.Controls.Add(this.btnFont);
-			this.tpText.Location = new System.Drawing.Point(4, 22);
-			this.tpText.Name = "tpText";
-			this.tpText.Padding = new System.Windows.Forms.Padding(3);
-			this.tpText.Size = new System.Drawing.Size(264, 191);
-			this.tpText.TabIndex = 0;
-			this.tpText.Text = "Text";
-			this.tpText.UseVisualStyleBackColor = true;
+			this.tsmiExit.Name = "tsmiExit";
+			this.tsmiExit.Size = new System.Drawing.Size(137, 22);
+			this.tsmiExit.Text = "Exit";
+			this.tsmiExit.Click += new System.EventHandler(this.tsmiExit_Click);
 			// 
-			// tpShapes
+			// saveFileDialog1
 			// 
-			this.tpShapes.Controls.Add(this.rbRectangle);
-			this.tpShapes.Controls.Add(this.rbEllipse);
-			this.tpShapes.Controls.Add(this.pForeColor);
-			this.tpShapes.Controls.Add(this.nudLineWidth);
-			this.tpShapes.Controls.Add(this.lblLineColor);
-			this.tpShapes.Controls.Add(this.lblLineWidth);
-			this.tpShapes.Location = new System.Drawing.Point(4, 22);
-			this.tpShapes.Name = "tpShapes";
-			this.tpShapes.Padding = new System.Windows.Forms.Padding(3);
-			this.tpShapes.Size = new System.Drawing.Size(264, 191);
-			this.tpShapes.TabIndex = 1;
-			this.tpShapes.Text = "Shapes";
-			this.tpShapes.UseVisualStyleBackColor = true;
+			this.saveFileDialog1.CheckFileExists = true;
+			this.saveFileDialog1.CreatePrompt = true;
 			// 
-			// tpImage
+			// openFileDialog1
 			// 
-			this.tpImage.Controls.Add(this.lblHeight);
-			this.tpImage.Controls.Add(this.lblWidth);
-			this.tpImage.Controls.Add(this.btnLoadImage);
-			this.tpImage.Controls.Add(this.nudImageWidth);
-			this.tpImage.Controls.Add(this.nudImageHeight);
-			this.tpImage.Location = new System.Drawing.Point(4, 22);
-			this.tpImage.Name = "tpImage";
-			this.tpImage.Size = new System.Drawing.Size(264, 191);
-			this.tpImage.TabIndex = 2;
-			this.tpImage.Text = "Image";
-			this.tpImage.UseVisualStyleBackColor = true;
+			this.openFileDialog1.FileName = "openFileDialog1";
 			// 
-			// lblWidth
+			// fontDialog1
 			// 
-			this.lblWidth.AutoSize = true;
-			this.lblWidth.Location = new System.Drawing.Point(97, 10);
-			this.lblWidth.Name = "lblWidth";
-			this.lblWidth.Size = new System.Drawing.Size(35, 13);
-			this.lblWidth.TabIndex = 16;
-			this.lblWidth.Text = "Width";
-			// 
-			// lblHeight
-			// 
-			this.lblHeight.AutoSize = true;
-			this.lblHeight.Location = new System.Drawing.Point(158, 10);
-			this.lblHeight.Name = "lblHeight";
-			this.lblHeight.Size = new System.Drawing.Size(38, 13);
-			this.lblHeight.TabIndex = 17;
-			this.lblHeight.Text = "Height";
+			this.fontDialog1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+			this.fontDialog1.ShowColor = true;
 			// 
 			// MainForm
 			// 
@@ -576,27 +581,27 @@
 			this.Text = "Print page editor";
 			this.SizeChanged += new System.EventHandler(this.MainForm_SizeChanged);
 			this.pMain.ResumeLayout(false);
+			this.pCanvas.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.pbCanvas)).EndInit();
 			this.pToolbar.ResumeLayout(false);
 			this.pToolbar.PerformLayout();
 			this.gbTools.ResumeLayout(false);
 			this.gbTools.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.nudImageHeight)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.nudImageWidth)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.nudLineWidth)).EndInit();
-			this.msMenu.ResumeLayout(false);
-			this.msMenu.PerformLayout();
-			this.statusStrip1.ResumeLayout(false);
-			this.statusStrip1.PerformLayout();
-			this.pCanvas.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.pbCanvas)).EndInit();
-			this.contextMenuStrip1.ResumeLayout(false);
 			this.tabControl.ResumeLayout(false);
 			this.tpText.ResumeLayout(false);
 			this.tpText.PerformLayout();
 			this.tpShapes.ResumeLayout(false);
 			this.tpShapes.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.nudLineWidth)).EndInit();
 			this.tpImage.ResumeLayout(false);
 			this.tpImage.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.nudImageWidth)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.nudImageHeight)).EndInit();
+			this.statusStrip1.ResumeLayout(false);
+			this.statusStrip1.PerformLayout();
+			this.contextMenuStrip1.ResumeLayout(false);
+			this.msMenu.ResumeLayout(false);
+			this.msMenu.PerformLayout();
 			this.ResumeLayout(false);
 
 		}
