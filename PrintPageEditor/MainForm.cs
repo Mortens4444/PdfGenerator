@@ -22,12 +22,7 @@ namespace PrintPageEditor
 		public MainForm()
 		{
 			InitializeComponent();
-			//SetStyle(ControlStyles.DoubleBuffer, true);
-			//SetStyle(ControlStyles.ResizeRedraw, true);
-			//SetStyle(ControlStyles.AllPaintingInWmPaint, true);
-			//SetStyle(ControlStyles.UserPaint, true);
-
-			cbFontSize.SelectedIndex = 4;
+            cbFontSize.SelectedIndex = 4;
 		}
 
 		private void tsmiExit_Click(object sender, EventArgs e)
@@ -37,17 +32,9 @@ namespace PrintPageEditor
 
 		private void pbCanvas_MouseDown(object sender, MouseEventArgs e)
 		{
-			if (tabControl.SelectedTab == tpShapes)
+			if (e.Button == MouseButtons.Left)
 			{
-				if (e.Button == MouseButtons.Left)
-				{
-					mouseDownLocation = e.Location;
-				}
-				else
-				{
-					mouseDownLocation = null;
-					temporarlyPrintable = null;
-				}
+				mouseDownLocation = e.Location;
 			}
 		}
 
@@ -80,21 +67,17 @@ namespace PrintPageEditor
 			if (printable != null)
 			{
 				printable.DrawOnGraphics(e.Graphics);
-				RefreshScreen();
+				Update();
 			}
 		}
 
 		private void pbCanvas_MouseMove(object sender, MouseEventArgs e)
 		{
-			if (tabControl.SelectedTab == tpText || tabControl.SelectedTab == tpImage)
-			{
-				mouseDownLocation = e.Location;
-			}
-			else
-			{
-				mouseDownLocation = null;
-			}
-			mouseX = e.X;
+            if (tabControl.SelectedTab == tpText || tabControl.SelectedTab == tpImage)
+            {
+                mouseDownLocation = e.Location;
+            }
+            mouseX = e.X;
 			mouseY = e.Y;
 			showHorizontalHelper = printables.Any(printable => printable.Y == mouseY);
 			showVerticalHelper = printables.Any(printable => printable.X == mouseX);
@@ -104,6 +87,7 @@ namespace PrintPageEditor
 			{
 				CreateNewObject(e.Location);
 			}
+			pbCanvas.Invalidate();
 		}
 
 		private void CreateNewObject(Point? mouseButtonRelesedLocation = null)
@@ -131,8 +115,8 @@ namespace PrintPageEditor
 					temporarlyPrintable = new PdfImage(imageFilePath, mouseDownLocation.Value.X, mouseDownLocation.Value.Y, (int)nudImageWidth.Value, (int)nudImageHeight.Value);
 				}
 			}
-			
-			RefreshScreen();
+
+			Update();
 		}
 
 		private void tsmi_Save_Click(object sender, EventArgs e)
@@ -180,7 +164,7 @@ namespace PrintPageEditor
 
 		private void MainForm_SizeChanged(object sender, EventArgs e)
 		{
-			RefreshScreen(true);
+			Update();
 		}
 
 		private void btnFont_Click(object sender, EventArgs e)
@@ -210,7 +194,7 @@ namespace PrintPageEditor
 				}
 				temporarlyPrintable = null;
 				pbCanvas.Select();
-				RefreshScreen(true);
+				Update();
 			}
 		}
 
@@ -222,7 +206,7 @@ namespace PrintPageEditor
 				var image = Image.FromFile(imageFilePath);
 				nudImageWidth.Value = image.Width;
 				nudImageHeight.Value = image.Height;
-				RefreshScreen(true);
+				Update();
 			}
 		}
 
@@ -239,7 +223,7 @@ namespace PrintPageEditor
 				printables.Remove(printable);
 				lvPrintables.Items.Remove(selectedItem);
 			}
-			RefreshScreen(true);
+			pbCanvas.Invalidate();
 		}
 
 		private void tsmiPrint_Click(object sender, EventArgs e)
@@ -273,17 +257,6 @@ namespace PrintPageEditor
 			{
 				cbFontSize.Text = fontSize.ToString();
 			}
-		}
-
-		private void RefreshScreen(bool forceSynchronousPaint = false)
-		{
-			pbCanvas.Invalidate();
-			// https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.control.invalidate?redirectedfrom=MSDN&view=netframework-4.8#System_Windows_Forms_Control_Invalidate
-			//Invalidate(true);
-			//if (forceSynchronousPaint)
-			//{
-			Update();
-			//}
 		}
 	}
 }

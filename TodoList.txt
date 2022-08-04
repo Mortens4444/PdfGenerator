@@ -1,6 +1,3 @@
-- 2nd Fonst selection cbFontize not set.
-- Refresh problem after drawing rectangle.
-- set MouseLocation
+- 2nd Font selection cbFontize not set.
 - Move up and down objects in list
 - DialogWindows show in background
-- Fix drawning shapes
