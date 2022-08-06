@@ -19,7 +19,7 @@ namespace PrintPageEditor.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -57,6 +57,37 @@ namespace PrintPageEditor.Properties {
             }
             set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
+        ///&lt;Printings&gt;
+        ///	&lt;PrintEllipse color=&quot;Yellow&quot; x=&quot;510&quot; y=&quot;36&quot; width=&quot;103&quot; height=&quot;91&quot; line_width=&quot;1&quot; fill=&quot;True&quot; /&gt;
+        ///	&lt;PrintLine color=&quot;Yellow&quot; x=&quot;605&quot; y=&quot;103&quot; x2=&quot;652&quot; y2=&quot;127&quot; line_width=&quot;1&quot; /&gt;
+        ///	&lt;PrintLine color=&quot;Yellow&quot; x=&quot;609&quot; y=&quot;92&quot; x2=&quot;664&quot; y2=&quot;115&quot; line_width=&quot;2&quot; /&gt;
+        ///	&lt;PrintLine color=&quot;Yellow&quot; x=&quot;608&quot; y=&quot;78&quot; x2=&quot;654&quot; y2=&quot;91&quot; line_width=&quot;1&quot; /&gt;
+        ///	&lt;PrintLine color=&quot;Yellow&quot; x=&quot;607&quot; y=&quot;70&quot; x2=&quot;670&quot; y2=&quot;71&quot; line_width=&quot;2&quot; /&gt;
+        ///	&lt;PrintLine color=&quot;Yellow&quot; x=&quot;606&quot; y=&quot;61&quot; x [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string ChildPaint {
+            get {
+                return ResourceManager.GetString("ChildPaint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
+        ///&lt;Printings&gt;
+        ///	&lt;PrintImage image_filename=&quot;.\Background.png&quot; /&gt;
+        ///	&lt;PrintText text=&quot;Congratulation @Name for being the @Position&quot; x=&quot;50&quot; y=&quot;150&quot; font_name=&quot;Times New Roman&quot; font_size=&quot;22&quot;/&gt;
+        ///	&lt;PrintText text=&quot;Have a nice day!&quot; x=&quot;50&quot; y=&quot;190&quot; color=&quot;Red&quot; /&gt;
+        ///	&lt;PrintRectangle color=&quot;black&quot; x=&quot;1&quot; y=&quot;1&quot; width=&quot;100&quot; height=&quot;100&quot; line_width=&quot;5&quot; /&gt;
+        ///&lt;/Printings&gt;.
+        /// </summary>
+        internal static string CurriculumVitæ {
+            get {
+                return ResourceManager.GetString("CurriculumVitæ", resourceCulture);
             }
         }
     }

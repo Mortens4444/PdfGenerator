@@ -1,9 +1,11 @@
 ﻿using PdfGenerator;
 using PdfGenerator.Printable;
+using PrintPageEditor.Properties;
 using System;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Windows.Forms;
 
 namespace PrintPageEditor
@@ -73,7 +75,7 @@ namespace PrintPageEditor
 
 		private void pbCanvas_MouseMove(object sender, MouseEventArgs e)
 		{
-            if (tabControl.SelectedTab == tpText || tabControl.SelectedTab == tpImage)
+            if ((tabControl.SelectedTab == tpText || tabControl.SelectedTab == tpImage) && mouseDownLocation != null)
             {
                 mouseDownLocation = e.Location;
             }
@@ -95,13 +97,17 @@ namespace PrintPageEditor
 			mouseUpLocation = mouseButtonRelesedLocation;
 			if (tabControl.SelectedTab == tpShapes && mouseDownLocation.HasValue && mouseUpLocation.HasValue && mouseDownLocation.Value.X != mouseUpLocation.Value.X && mouseDownLocation.Value.Y != mouseUpLocation.Value.Y)
 			{
-				if (rbRectangle.Checked)
+				if (rbLine.Checked)
 				{
-					temporarlyPrintable = new PdfRectangle(foregroundColor, (int)nudLineWidth.Value, mouseDownLocation.Value, mouseUpLocation.Value);					
+					temporarlyPrintable = new PdfLine(foregroundColor, (int)nudLineWidth.Value, mouseDownLocation.Value, mouseUpLocation.Value);
+				}
+				else if (rbRectangle.Checked)
+				{
+					temporarlyPrintable = new PdfRectangle(foregroundColor, (int)nudLineWidth.Value, mouseDownLocation.Value, mouseUpLocation.Value, chkFill.Checked);
 				}
 				else if (rbEllipse.Checked)
 				{
-					temporarlyPrintable = new PdfEllipse(foregroundColor, (int)nudLineWidth.Value, mouseDownLocation.Value, mouseUpLocation.Value);
+					temporarlyPrintable = new PdfEllipse(foregroundColor, (int)nudLineWidth.Value, mouseDownLocation.Value, mouseUpLocation.Value, chkFill.Checked);
 				}
 			}
 			if (mouseDownLocation.HasValue)
@@ -187,14 +193,7 @@ namespace PrintPageEditor
 			if (openFileDialog1.ShowDialog(this) == DialogResult.OK)
 			{
 				printables = Printables.LoadFromFiles(openFileDialog1.FileName);
-				lvPrintables.Items.Clear();
-				foreach (var printable in printables)
-				{
-					AddItem(printable);
-				}
-				temporarlyPrintable = null;
-				pbCanvas.Select();
-				Update();
+				LoadPrintables();
 			}
 		}
 
@@ -215,7 +214,30 @@ namespace PrintPageEditor
 			tssLabel.Text = "Ready";
 		}
 
-		private void tsmiDeletePrintable_Click(object sender, EventArgs e)
+        private void tsmiMoveUp_Click(object sender, EventArgs e)
+        {
+			var item = lvPrintables.SelectedItems[0];
+			int newIndex = item.Index - 1;
+			lvPrintables.Items.RemoveAt(item.Index);
+			lvPrintables.Items.Insert(newIndex, item);
+		}
+
+		private void tsmiMoveDown_Click(object sender, EventArgs e)
+		{
+			var item = lvPrintables.SelectedItems[0];
+			int newIndex = item.Index + 1;
+			lvPrintables.Items.RemoveAt(item.Index);
+			lvPrintables.Items.Insert(newIndex, item);
+		}
+
+		private void contextMenuStrip1_Opening(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+			tsmiDeletePrintable.Enabled = lvPrintables.SelectedItems.Count > 0;
+			tsmiMoveUp.Enabled = lvPrintables.SelectedItems.Count == 1 && lvPrintables.SelectedItems[0].Index > 0;
+			tsmiMoveDown.Enabled = lvPrintables.SelectedItems.Count == 1 && lvPrintables.SelectedItems[0].Index < lvPrintables.Items.Count - 1;
+		}
+
+        private void tsmiDeletePrintable_Click(object sender, EventArgs e)
 		{
 			foreach (ListViewItem selectedItem in lvPrintables.SelectedItems)
 			{
@@ -235,6 +257,30 @@ namespace PrintPageEditor
 				var printOutputPath = $"{printingRulesFilePath}.pdf";
 				pdfPrinter.Print(printOutputPath, printingRulesFilePath);
 			}
+		}
+
+		private void tsmiChildPaint_Click(object sender, EventArgs e)
+        {
+            printables = Printables.LoadFromXmlText(Resources.ChildPaint);
+            LoadPrintables();
+        }
+
+        private void tsmiCurriculumVitæ_Click(object sender, EventArgs e)
+		{
+			printables = Printables.LoadFromXmlText(Resources.CurriculumVitæ);
+			LoadPrintables();
+		}
+
+		private void LoadPrintables()
+		{
+			lvPrintables.Items.Clear();
+			foreach (var printable in printables)
+			{
+				AddItem(printable);
+			}
+			temporarlyPrintable = null;
+			pbCanvas.Select();
+			Update();
 		}
 
 		private void nudImageSizeChanged(object sender, EventArgs e)

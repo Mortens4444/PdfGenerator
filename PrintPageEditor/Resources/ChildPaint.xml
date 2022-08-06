@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Printings>
+	<PrintEllipse color="Yellow" x="510" y="36" width="103" height="91" line_width="1" fill="True" />
+	<PrintLine color="Yellow" x="605" y="103" x2="652" y2="127" line_width="1" />
+	<PrintLine color="Yellow" x="609" y="92" x2="664" y2="115" line_width="2" />
+	<PrintLine color="Yellow" x="608" y="78" x2="654" y2="91" line_width="1" />
+	<PrintLine color="Yellow" x="607" y="70" x2="670" y2="71" line_width="2" />
+	<PrintLine color="Yellow" x="606" y="61" x2="640" y2="48" line_width="1" />
+	<PrintLine color="Yellow" x="595" y="53" x2="661" y2="20" line_width="2" />
+	<PrintLine color="Yellow" x="584" y="47" x2="616" y2="9" line_width="1" />
+	<PrintLine color="Yellow" x="565" y="35" x2="568" y2="-12" line_width="2" />
+	<PrintLine color="Yellow" x="546" y="43" x2="526" y2="10" line_width="1" />
+	<PrintLine color="Yellow" x="529" y="59" x2="474" y2="19" line_width="2" />
+	<PrintLine color="Yellow" x="517" y="74" x2="472" y2="49" line_width="1" />
+	<PrintLine color="Yellow" x="514" y="80" x2="457" y2="82" line_width="2" />
+	<PrintLine color="Yellow" x="519" y="99" x2="478" y2="116" line_width="1" />
+	<PrintLine color="Yellow" x="530" y="111" x2="491" y2="147" line_width="2" />
+	<PrintLine color="Yellow" x="583" y="103" x2="624" y2="145" line_width="2" />
+	<PrintLine color="Yellow" x="546" y="125" x2="528" y2="149" line_width="1" />
+	<PrintLine color="Yellow" x="574" y="122" x2="588" y2="151" line_width="1" />
+	<PrintLine color="Yellow" x="562" y="124" x2="564" y2="169" line_width="2" />
+	<PrintRectangle color="Green" x="0" y="367" width="953" height="462" line_width="2" fill="True" />
+	<PrintRectangle color="ff804040" x="138" y="269" width="25" height="164" line_width="2" fill="True" />
+	<PrintEllipse color="Green" x="75" y="175" width="150" height="119" line_width="2" fill="True" />
+</Printings>

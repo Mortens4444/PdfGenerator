@@ -8,6 +8,8 @@ namespace PdfGenerator
 {
 	public class Printables : List<IPrintable>
 	{
+		private static readonly PrintablesProvider printablesProvider = new PrintablesProvider();
+
 		public void DrawOnGraphics(Graphics graphics)
 		{
 			foreach (var printable in this)
@@ -29,8 +31,12 @@ namespace PdfGenerator
 
 		public static Printables LoadFromFiles(string printingRulesFilePath)
 		{
-			var printablesProvider = new PrintablesProvider();
-			return printablesProvider.Get(printingRulesFilePath);
+			return printablesProvider.GetFromFile(printingRulesFilePath);
+		}
+
+		public static Printables LoadFromXmlText(string xmlContent)
+		{
+			return printablesProvider.GetFromXmlText(xmlContent);
 		}
 	}
 }

@@ -1,18 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28010.2048
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32328.378
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PdfGenerator", "PdfGenerator\PdfGenerator.csproj", "{2F84B195-EF28-4E89-81F7-A468734EDEF3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiPdfGeneration", "MultiPdfGeneration\MultiPdfGeneration.csproj", "{D7E11C69-2482-4509-9991-6C8987C673FD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrintPageEditor", "PrintPageEditor\PrintPageEditor.csproj", "{E2D87697-EF35-449F-9235-C68FFBE60675}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{683A11D0-11D0-4CD1-9813-DBDFC6F25AE3}"
-	ProjectSection(SolutionItems) = preProject
-		TodoList.txt = TodoList.txt
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -48,15 +48,11 @@
     <Compile Include="Printable\ISizedPrintable.cs" />
     <Compile Include="Printable\IPrintable.cs" />
     <Compile Include="Printable\PdfEllipse.cs" />
+    <Compile Include="Printable\PdfLine.cs" />
     <Compile Include="Printable\PdfRectangle.cs" />
     <Compile Include="Printable\PdfText.cs" />
     <Compile Include="Printable\PdfImage.cs" />
-    <Compile Include="Printer.cs" />
-    <Compile Include="Printers\ImagePrinter.cs" />
-    <Compile Include="Printers\EllipsePrinter.cs" />
-    <Compile Include="Printers\RectanglePrinter.cs" />
-    <Compile Include="Printers\TextPrinter.cs" />
-    <Compile Include="Printers\PrinterBase.cs" />
+    <Compile Include="Printable\IDimensionPrintable.cs" />
     <Compile Include="PdfPrinter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TypeExtensions.cs" />

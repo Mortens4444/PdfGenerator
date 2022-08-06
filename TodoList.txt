@@ -1,3 +1,0 @@
-- 2nd Font selection cbFontize not set.
-- Move up and down objects in list
-- DialogWindows show in background

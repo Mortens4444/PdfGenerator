@@ -7,6 +7,8 @@ namespace PdfGenerator.Printable
 	{
 		public Size Size { get; protected set; }
 
+		public bool Fill { get; protected set; }
+
 		public int Width
 		{
 			get
@@ -28,6 +30,7 @@ namespace PdfGenerator.Printable
 			var result = base.ToListViewItem();
 			result.SubItems.Add(Width.ToString());
 			result.SubItems.Add(Height.ToString());
+			result.SubItems.Add($"{StrFill} = {Fill}");
 			return result;
 		}
 	}

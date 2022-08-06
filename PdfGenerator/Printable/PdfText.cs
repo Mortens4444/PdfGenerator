@@ -49,8 +49,8 @@ namespace PdfGenerator.Printable
 
 		public PdfText(Dictionary<string, string> attributes)
 		{
-			Location = new Point(Convert.ToInt32(attributes[StrX]), Convert.ToInt32(attributes[StrY]));
-			Color = attributes.ContainsKey(StrColor) ? Color.FromName(attributes[StrColor]) : Color.Black;
+			Location = GetLocationFromAttributes(attributes);
+			Color = GetColorFromAttributes(attributes);
 			Text = attributes[StrText];
 			FontName = attributes.ContainsKey(StrFontName) ? attributes[StrFontName] : "Arial";
 			FontSize = attributes.ContainsKey(StrFontSize) ? Convert.ToSingle(attributes[StrFontSize]) : 12;

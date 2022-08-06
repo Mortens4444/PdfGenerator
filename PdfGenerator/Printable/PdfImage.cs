@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 
 namespace PdfGenerator.Printable
 {
-	public class PdfImage : ISizedPrintable
+    public class PdfImage : ISizedPrintable
 	{
 		public Image Image { get; private set; }
 
@@ -34,8 +33,9 @@ namespace PdfGenerator.Printable
 		{
 			imageFilePath = attributes[StrImageFilename];
 			Image = Image.FromFile(imageFilePath);
-			Location = new Point(attributes.ContainsKey(StrX) ? Convert.ToInt32(attributes[StrX]) : 0, attributes.ContainsKey(StrY) ? Convert.ToInt32(attributes[StrY]) : 0);
-			Size = new Size(attributes.ContainsKey(StrWidth) ? Convert.ToInt32(attributes[StrWidth]) : Image.Width, attributes.ContainsKey(StrHeight) ? Convert.ToInt32(attributes[StrHeight]) : Image.Height);
+			Location = GetLocationFromAttributes(attributes);
+			var size = GetSizeFromAttributes(attributes);
+			Size = size != Size.Empty ? size : Image.Size;
 		}
 
 		public override void DrawOnGraphics(Graphics graphics)
