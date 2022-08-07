@@ -1,0 +1,48 @@
+- ericsson:
+  full_name: Ericsson Hungary Ltd.
+  from: 04/05/2020
+  to: ~
+  role: C# developer
+  projects:
+    - SDE
+
+- cognex:
+  full_name: Cognex Hungary Ltd. 
+  from: 06/2018
+  to: 03/2020
+  role: C# developer / C++ developer
+  projects:
+    - SoftwareController
+    - Iceberg (Installer - WiX)
+
+- qualysoft:
+  full_name: Qualysoft Informatics d.o.o.
+  from: 14/04/2014
+  to: 05/2018
+  role: C# developer
+  projects:
+    - PCI (Ericsson contributor)
+
+- ozeki:
+  full_name: Ozeki Informatics Ltd.
+  from: 11/2013
+  to: 02/2013
+  role: .NET developer
+  projects:
+    - Phone System
+    - 3D Softphone
+
+- sziltech:
+  full_name: Sziltech Electronic Ltd.
+  from: 06/2018
+  to: 03/2020
+  role: C++/CLI, C# developer
+  projects:
+    - LiveView (Video Surveillance System)
+    - VideoSupervisor
+
+- army:
+  full_name: Hungarian Defense Forces
+  from: 12/2007
+  to: 02/2008
+  role: Basic airman

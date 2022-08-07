@@ -1,0 +1,48 @@
+operating_systems:
+  - Windows
+  - Linux / UNIX
+  - DOS
+
+development_tools:
+  - Visual Studio
+  - Project Rider
+  - MonoDevelop
+  - Microsoft SQL Server / MySQL
+  - Lazarus
+
+ci_cd:
+  - TeamCity
+  - Jenkins
+
+programming_and_script_languages:
+  - C#
+  - PowerShell
+  - TypeScript
+  - JavaScript
+  - C++/CLI
+  - SQL
+  - Java
+  - C++
+  - C
+  - Object Pascal
+  - Delphi
+  - Pascal
+  - PHP
+  - Ruby
+  - HTML / XML
+  - CLIPS
+  - Assembly
+
+used_technologies_and_libraries:
+ - AJAX
+ - jQuery
+ - Knockout
+ - Bluebird
+ - log4net
+ - SignalR
+ - Ninject
+
+subversioning_systems:
+  - GIT
+  - SVN
+  - RTC

@@ -1,0 +1,26 @@
+scrum_alliance:
+  school: ScrumAlliance
+  qualification: Certified ScrumMaster
+  dates: 12/2015
+
+debreceni_egyetem:
+  school: University of Debrecen
+  qualification: Software Information Technology Bsc, BA/BSc
+  dates: 09/2010 – 01/2014
+
+széchenyi_egyetem:
+  school: Széchenyi István University
+  qualification: Information Technology, Embedded Programming
+  dates: 09/2003 – 06/2007
+  state: unfinished
+
+technikum:
+  school: Erdey-Grúz Tibor Secondary School for Chemistry 
+  qualification: Electrical And Computer Engineering (OKJ 52 5423 07)
+  dates: 09/2002 – 06/2003
+
+vegyi:
+  school: Erdey-Grúz Tibor Secondary School for Chemistry
+  qualification: graduation
+  dates: 09/1998 – 06/2002
+  Main subjects: electrical engineering, computer science

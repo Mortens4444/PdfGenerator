@@ -1,3 +1,26 @@
-<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8" ?>
 <Printings>
+	<PrintText text="Curriculum vitæ" x="10" y="5" font_name="Comic Sans MS" font_size="26" color="Black" />
+	
+	<PrintText text="Personal data" x="10" y="50" font_name="Comic Sans MS" font_size="16" color="Black" />
+	<PrintLine color="Black" x="10" y="80" x2="500" y2="80" line_width="1" />
+	<PrintText text="@personal_data.yaml" x="10" y="85" font_name="Comic Sans MS" font_size="12" color="Black" />
+	
+	<PrintText text="Work experience" x="10" y="305" font_name="Comic Sans MS" font_size="16" color="Black" />
+	<PrintLine color="Black" x="10" y="335" x2="500" y2="335" line_width="1" />
+	<PrintText text="@work_experience.yaml" x="10" y="340" font_name="Comic Sans MS" font_size="12" color="Black" />
+	
+	<PrintText text="Education" x="10" y="700" font_name="Comic Sans MS" font_size="16" color="Black" />
+	<PrintLine color="Black" x="10" y="705" x2="500" y2="705" line_width="1" />
+	<PrintText text="@education.yaml" x="10" y="710" font_name="Comic Sans MS" font_size="12" color="Black" />
+	
+	<PrintText text="Language skills" x="10" y="1150" font_name="Comic Sans MS" font_size="16" color="Black" />
+	<PrintLine color="Black" x="10" y="1185" x2="500" y2="1185" line_width="1" />
+	<PrintText text="@languages.yaml" x="10" y="1200" font_name="Comic Sans MS" font_size="12" color="Black" />
+	
+	<PrintText text="Computer skills" x="10" y="1253" font_name="Comic Sans MS" font_size="16" color="Black" />
+	<PrintLine color="Black" x="10" y="1295" x2="500" y2="1295" line_width="1" />
+	<PrintText text="@computer_skills.yaml" x="10" y="1307" font_name="Comic Sans MS" font_size="12" color="Black" />
+	
+	<PrintImage image_filename=".\Resources\me.png" x="550" y="80" width="125" height="170" />
 </Printings>

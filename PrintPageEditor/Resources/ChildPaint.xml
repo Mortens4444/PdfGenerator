@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8" ?>
 <Printings>
 	<PrintEllipse color="Yellow" x="510" y="36" width="103" height="91" line_width="1" fill="True" />
 	<PrintLine color="Yellow" x="605" y="103" x2="652" y2="127" line_width="1" />

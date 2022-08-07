@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace PdfGenerator
 {
-	public class PdfPrinter
+    public class PdfPrinter
 	{
 		private PrintDocument printDocument;
 
@@ -17,16 +17,27 @@ namespace PdfGenerator
 		/// </summary>
 		/// <param name="printOutputPath">Output filename</param>
 		/// <param name="printingRulesFilePath">Printing rules file</param>
-		/// <param name="replacables">Replace key value pairs in the printing be this map</param>
-		public void Print(string printOutputPath, string printingRulesFilePath, Dictionary<string, string> replacables = null)
+		/// <param name="replaceables">Replace key value pairs in the printing be this map</param>
+		public void Print(string printOutputPath, string printingRulesFilePath, Dictionary<string, string> replaceables = null)
 		{
 			var printables = Printables.LoadFromFiles(printingRulesFilePath);
-			if (replacables != null && replacables.Any())
+			Print(printOutputPath, printables, replaceables);
+		}
+
+		/// <summary>
+		/// Generate a PDF file
+		/// </summary>
+		/// <param name="printOutputPath">Output filename</param>
+		/// <param name="printables">Printables elements</param>
+		/// <param name="replaceables">Replace key value pairs in the printing be this map</param>
+		public void Print(string printOutputPath, Printables printables, Dictionary<string, string> replaceables = null)
+		{
+			if (replaceables != null && replaceables.Any())
 			{
 				var texts = printables.Where(printable => printable is PdfText);
 				foreach (PdfText text in texts)
 				{
-					foreach (var replacable in replacables)
+					foreach (var replacable in replaceables)
 					{
 						text.Text = text.Text.Replace(replacable.Key, replacable.Value);
 					}

@@ -2,22 +2,22 @@
 using PdfGenerator.Printable;
 using PrintPageEditor.Properties;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace PrintPageEditor
 {
-	public partial class MainForm : Form
+    public partial class MainForm : Form
 	{
 		private Point? mouseDownLocation = null, mouseUpLocation;
 		private Printables printables = new Printables();
 		private Color foregroundColor = Color.Black, fontColor = Color.Black;
 		private int fontSize = 12;
 		private string fontName = "Arial", imageFilePath;
-		private IPrintable temporarlyPrintable;
+		private IPrintable temporarilyPrintable;
 		private bool showHorizontalHelper, showVerticalHelper;
 		private int mouseX, mouseY;
 
@@ -42,7 +42,7 @@ namespace PrintPageEditor
 
 		private void pForeColor_DoubleClick(object sender, EventArgs e)
 		{
-			if (colorDialog1.ShowDialog(this) == DialogResult.OK)
+			if (colorDialog1.ShowDialog() == DialogResult.OK)
 			{
 				foregroundColor = colorDialog1.Color;
 				pForeColor.BackColor = colorDialog1.Color;
@@ -61,7 +61,7 @@ namespace PrintPageEditor
 			}
 
 			printables.DrawOnGraphics(e.Graphics);
-			DrawPrintable(temporarlyPrintable, e);
+			DrawPrintable(temporarilyPrintable, e);
 		}
 
 		private void DrawPrintable(IPrintable printable, PaintEventArgs e)
@@ -99,26 +99,26 @@ namespace PrintPageEditor
 			{
 				if (rbLine.Checked)
 				{
-					temporarlyPrintable = new PdfLine(foregroundColor, (int)nudLineWidth.Value, mouseDownLocation.Value, mouseUpLocation.Value);
+					temporarilyPrintable = new PdfLine(foregroundColor, (int)nudLineWidth.Value, mouseDownLocation.Value, mouseUpLocation.Value);
 				}
 				else if (rbRectangle.Checked)
 				{
-					temporarlyPrintable = new PdfRectangle(foregroundColor, (int)nudLineWidth.Value, mouseDownLocation.Value, mouseUpLocation.Value, chkFill.Checked);
+					temporarilyPrintable = new PdfRectangle(foregroundColor, (int)nudLineWidth.Value, mouseDownLocation.Value, mouseUpLocation.Value, chkFill.Checked);
 				}
 				else if (rbEllipse.Checked)
 				{
-					temporarlyPrintable = new PdfEllipse(foregroundColor, (int)nudLineWidth.Value, mouseDownLocation.Value, mouseUpLocation.Value, chkFill.Checked);
+					temporarilyPrintable = new PdfEllipse(foregroundColor, (int)nudLineWidth.Value, mouseDownLocation.Value, mouseUpLocation.Value, chkFill.Checked);
 				}
 			}
 			if (mouseDownLocation.HasValue)
 			{
 				if (tabControl.SelectedTab == tpText && !String.IsNullOrWhiteSpace(tbText.Text))
 				{
-					temporarlyPrintable = new PdfText(tbText.Text, mouseDownLocation.Value, fontColor, fontName, fontSize);
+					temporarilyPrintable = new PdfText(tbText.Text, mouseDownLocation.Value, fontColor, fontName, fontSize);
 				}
 				else if (tabControl.SelectedTab == tpImage && !String.IsNullOrWhiteSpace(imageFilePath))
 				{
-					temporarlyPrintable = new PdfImage(imageFilePath, mouseDownLocation.Value.X, mouseDownLocation.Value.Y, (int)nudImageWidth.Value, (int)nudImageHeight.Value);
+					temporarilyPrintable = new PdfImage(imageFilePath, mouseDownLocation.Value.X, mouseDownLocation.Value.Y, (int)nudImageWidth.Value, (int)nudImageHeight.Value);
 				}
 			}
 
@@ -133,7 +133,7 @@ namespace PrintPageEditor
 		private string SavePrintingRuleFileWithDialog()
 		{
 			saveFileDialog1.InitialDirectory = Application.StartupPath;
-			if (saveFileDialog1.ShowDialog(this) == DialogResult.OK)
+			if (saveFileDialog1.ShowDialog() == DialogResult.OK)
 			{
 				var fileContent = printables.GetFileContent();
 				File.WriteAllText(saveFileDialog1.FileName, fileContent);
@@ -150,10 +150,10 @@ namespace PrintPageEditor
 			}
 
 			CreateNewObject(e.Location);
-			if (temporarlyPrintable != null)
+			if (temporarilyPrintable != null)
 			{
-				printables.Add(temporarlyPrintable);
-				AddItem(temporarlyPrintable);
+				printables.Add(temporarilyPrintable);
+				AddItem(temporarilyPrintable);
 			}
 			mouseDownLocation = null;
 		}
@@ -175,7 +175,7 @@ namespace PrintPageEditor
 
 		private void btnFont_Click(object sender, EventArgs e)
 		{
-			if (fontDialog1.ShowDialog(this) == DialogResult.OK)
+			if (fontDialog1.ShowDialog() == DialogResult.OK)
 			{
 				fontName = fontDialog1.Font.Name;
 				fontColor = fontDialog1.Color;
@@ -190,7 +190,8 @@ namespace PrintPageEditor
 
 		private void tsmi_Load_Click(object sender, EventArgs e)
 		{
-			if (openFileDialog1.ShowDialog(this) == DialogResult.OK)
+			openFileDialog1.Filter = "XML files|*.xml";
+			if (openFileDialog1.ShowDialog() == DialogResult.OK)
 			{
 				printables = Printables.LoadFromFiles(openFileDialog1.FileName);
 				LoadPrintables();
@@ -199,7 +200,8 @@ namespace PrintPageEditor
 
 		private void btnLoadImage_Click(object sender, EventArgs e)
 		{
-			if (openFileDialog1.ShowDialog(this) == DialogResult.OK)
+			openFileDialog1.Filter = "Bmp files|*.bmp|Jpeg files|*.jpg|Png files|*.png|All files|*.*";
+			if (openFileDialog1.ShowDialog() == DialogResult.OK)
 			{
 				imageFilePath = openFileDialog1.FileName;
 				var image = Image.FromFile(imageFilePath);
@@ -255,20 +257,58 @@ namespace PrintPageEditor
 			{
 				var pdfPrinter = new PdfPrinter();
 				var printOutputPath = $"{printingRulesFilePath}.pdf";
-				pdfPrinter.Print(printOutputPath, printingRulesFilePath);
+				try
+				{
+					pdfPrinter.Print(printOutputPath, printingRulesFilePath);
+				}
+				catch (Exception ex)
+				{
+					MessageBox.Show(ex.Message, ex.GetType().Name, MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+				}
 			}
 		}
 
 		private void tsmiChildPaint_Click(object sender, EventArgs e)
         {
-            printables = Printables.LoadFromXmlText(Resources.ChildPaint);
+			printables = Printables.LoadFromXmlText(Resources.ChildPaint);
             LoadPrintables();
         }
 
         private void tsmiCurriculumVitæ_Click(object sender, EventArgs e)
 		{
+			var files = new string[]
+			{
+				"personal_data.yaml",
+				"work_experience.yaml",
+				"internship.yaml",
+				"education.yaml",
+				"computer_skills.yaml",
+				"languages.yaml",
+				"other_abilities.yaml",
+				"interests.yaml"
+			};
+			
+			var replaceables = new Dictionary<string, string>();
+			foreach (var file in files)
+            {
+				var currentFile = Path.Combine(Application.StartupPath, "Resources", file);
+				var content = File.ReadAllText(currentFile);
+				replaceables.Add($"@{file}", content);
+			}
+
 			printables = Printables.LoadFromXmlText(Resources.CurriculumVitæ);
 			LoadPrintables();
+
+			var pdfPrinter = new PdfPrinter();
+			var printOutputPath = Path.Combine(Application.StartupPath, "Curriculum vitæ.pdf");
+			try
+			{
+				pdfPrinter.Print(printOutputPath, printables, replaceables);
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show(ex.Message, ex.GetType().Name, MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+			}
 		}
 
 		private void LoadPrintables()
@@ -278,7 +318,7 @@ namespace PrintPageEditor
 			{
 				AddItem(printable);
 			}
-			temporarlyPrintable = null;
+			temporarilyPrintable = null;
 			pbCanvas.Select();
 			Update();
 		}
