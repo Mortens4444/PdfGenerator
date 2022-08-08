@@ -33,6 +33,10 @@ namespace PdfGenerator.Printable
 
 		protected const string StrLineWidth = "line_width";
 
+		protected static int LastX = 0;
+
+		protected static int LastY = 0;
+
 		public Point Location { get; protected set; }
 
 		public int X
@@ -55,10 +59,12 @@ namespace PdfGenerator.Printable
 
 		public new abstract string ToString();
 
-		protected Point GetLocationFromAttributes(Dictionary<string, string> attributes)
+		protected Point GetLocationFromAttributes(Dictionary<string, string> attributes, int deltaY = 5)
 		{
-			var x = attributes.ContainsKey(StrX) ? Convert.ToInt32(attributes[StrX]) : 0;
-			var y = attributes.ContainsKey(StrY) ? Convert.ToInt32(attributes[StrY]) : 0;
+			var x = attributes.ContainsKey(StrX) ? Convert.ToInt32(attributes[StrX]) : LastX;
+			var y = attributes.ContainsKey(StrY) ? Convert.ToInt32(attributes[StrY]) : LastY;
+			LastX = x;
+			LastY = y + deltaY;
 			return new Point(x, y);
 		}
 

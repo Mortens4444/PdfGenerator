@@ -24,8 +24,15 @@ namespace PdfGenerator.Printable
 		{
 			var lineWidth = GetLineWidthFromAttributes(attributes);
 			Pen = new Pen(GetColorFromAttributes(attributes), lineWidth);
-			Location = GetLocationFromAttributes(attributes);
-			EndLocation = new Point(Convert.ToInt32(attributes[StrX2]), Convert.ToInt32(attributes[StrY2]));
+			Location = GetLocationFromAttributes(attributes, 0);
+			EndLocation = GetEndLocationFromAttributes(attributes);
+		}
+
+		private Point GetEndLocationFromAttributes(Dictionary<string, string> attributes)
+		{
+			var x = attributes.ContainsKey(StrX2) ? Convert.ToInt32(attributes[StrX2]) : LastX;
+			var y = attributes.ContainsKey(StrY2) ? Convert.ToInt32(attributes[StrY2]) : LastY;
+			return new Point(x, y);
 		}
 
 		public override void DrawOnGraphics(Graphics graphics)

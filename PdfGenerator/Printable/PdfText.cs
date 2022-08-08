@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace PdfGenerator.Printable
@@ -52,8 +54,18 @@ namespace PdfGenerator.Printable
 			Location = GetLocationFromAttributes(attributes);
 			Color = GetColorFromAttributes(attributes);
 			Text = attributes[StrText];
-			FontName = attributes.ContainsKey(StrFontName) ? attributes[StrFontName] : "Arial";
+			FontName = attributes.ContainsKey(StrFontName) ? attributes[StrFontName] : "Arial";			
 			FontSize = attributes.ContainsKey(StrFontSize) ? Convert.ToSingle(attributes[StrFontSize]) : 12;
+
+			var numberOfLines = Text.Count(c => c == '\n') + 1;
+			if (Text.StartsWith("@"))
+            {
+				var fileName = Text.Substring(1);
+				var currentFile = Path.Combine(Application.StartupPath, "Resources", fileName);
+				var content = File.ReadAllText(currentFile);
+				numberOfLines = content.Count(c => c == '\n') + 1;
+			}
+			LastY += (int)Math.Ceiling(numberOfLines * FontSize * 1.9) + 5;
 		}
 
 		public override void DrawOnGraphics(Graphics graphics)
