@@ -29,10 +29,14 @@ namespace PdfGenerator.Printable
 		}
 
 		public PdfRectangle(Color color, int lineWidth, int x, int y, int width, int height, bool fill)
+			: this(new Pen(color, lineWidth), new Point(x, y), new Size(width, height), fill)
+		{ }
+
+		public PdfRectangle(Pen pen, Point location, Size size, bool fill)
 		{
-			Pen = new Pen(color, lineWidth);
-			Location = new Point(x, y);
-			Size = new Size(width, height);
+			Pen = pen;
+			Location = location;
+			Size = size;
 			Fill = fill;
 		}
 
@@ -61,6 +65,11 @@ namespace PdfGenerator.Printable
 		public override string ToString()
 		{
 			return $"<PrintRectangle {StrColor}=\"{Pen.Color.Name}\" {StrX}=\"{X}\" {StrY}=\"{Y}\" {StrWidth}=\"{Width}\" {StrHeight}=\"{Height}\" {StrLineWidth}=\"{Pen.Width}\" {StrFill}=\"{Fill}\" />";
+		}
+
+		public override object Clone()
+		{
+			return new PdfRectangle(Pen, Location, Size, Fill);
 		}
 	}
 }

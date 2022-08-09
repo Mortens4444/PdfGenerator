@@ -9,8 +9,8 @@ namespace PdfGenerator.Printable
 {
 	public class PdfText : IPrintable
 	{
-        public Font Font { get; set; }
-		
+		public Font Font { get; set; }
+
 		public string Text { get; set; }
 
 		public Color FontColor { get; private set; }
@@ -25,7 +25,7 @@ namespace PdfGenerator.Printable
 
 		public PdfText(string text, Point location, Color fontColor)
 			: this(text, location, fontColor, new Font("Arial", 12))
-        { }
+		{ }
 
 		public PdfText(string text, Point location, Color fontColor, Font font)
 		{
@@ -40,13 +40,13 @@ namespace PdfGenerator.Printable
 			Location = GetLocationFromAttributes(attributes);
 			FontColor = GetColorFromAttributes(attributes);
 			Text = attributes[StrText];
-			var fontName = attributes.ContainsKey(StrFontName) ? attributes[StrFontName] : "Arial";			
+			var fontName = attributes.ContainsKey(StrFontName) ? attributes[StrFontName] : "Arial";
 			var fontSize = attributes.ContainsKey(StrFontSize) ? Convert.ToSingle(attributes[StrFontSize]) : 12;
 			var fontStyle = GetFontStyle(attributes);
 			Font = new Font(fontName, fontSize, fontStyle);
 			var numberOfLines = Text.Count(c => c == '\n') + 1;
 			if (Text.StartsWith("@"))
-            {
+			{
 				var fileName = Text.Substring(1);
 				var currentFile = Path.Combine(Application.StartupPath, "Resources", fileName);
 				var content = File.ReadAllText(currentFile);
@@ -72,6 +72,10 @@ namespace PdfGenerator.Printable
 			result.SubItems.Add(String.Empty);
 			result.SubItems.Add(Text);
 			return result;
+		}
+		public override object Clone()
+		{
+			return new PdfText(Text, Location, FontColor, Font);
 		}
 	}
 }

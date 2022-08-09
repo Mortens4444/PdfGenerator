@@ -9,8 +9,12 @@ namespace PdfGenerator.Printable
 		public Pen Pen { get; private set; }
 
 		public PdfLine(Color color, int lineWidth, Point location1, Point location2)
+			: this(new Pen(color, lineWidth), location1, location2)
 		{
-			Pen = new Pen(color, lineWidth);
+		}
+		public PdfLine(Pen pen, Point location1, Point location2)
+		{
+			Pen = pen;
 			Location = location1;
 			EndLocation = location2;
 		}
@@ -43,6 +47,11 @@ namespace PdfGenerator.Printable
 		public override string ToString()
 		{
 			return $"<PrintLine {StrColor}=\"{Pen.Color.Name}\" {StrX}=\"{X}\" {StrY}=\"{Y}\" {StrX2}=\"{EndX}\" {StrY2}=\"{EndY}\" {StrLineWidth}=\"{Pen.Width}\" />";
+		}
+
+		public override object Clone()
+		{
+			return new PdfLine(Pen, Location, EndLocation);
 		}
 	}
 }

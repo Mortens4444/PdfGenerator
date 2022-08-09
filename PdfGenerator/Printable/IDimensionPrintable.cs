@@ -22,6 +22,10 @@ namespace PdfGenerator.Printable
 			{
 				return EndLocation.Y;
 			}
+            set
+            {
+				EndLocation = new Point(EndLocation.X, value);
+            }
 		}
 
 		public override ListViewItem ToListViewItem()

@@ -54,5 +54,10 @@ namespace PdfGenerator.Printable
 			result.SubItems.Add(imageFilePath);
 			return result;
 		}
+
+		public override object Clone()
+		{
+			return new PdfImage(Image, Location, Size);
+		}
 	}
 }

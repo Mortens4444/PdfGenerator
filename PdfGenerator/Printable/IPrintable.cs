@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace PdfGenerator.Printable
 {
-	public abstract class IPrintable
+	public abstract class IPrintable : ICloneable
 	{
 		protected const string StrX = "x";
 
@@ -55,6 +55,10 @@ namespace PdfGenerator.Printable
 			{
 				return Location.Y;
 			}
+            set
+            {
+				Location = new Point(Location.X, value);
+            }
 		}
 
 		public abstract void DrawOnGraphics(Graphics graphics);
@@ -121,5 +125,7 @@ namespace PdfGenerator.Printable
 			result.Tag = this;
 			return result;
 		}
-	}
+
+		public abstract object Clone();
+    }
 }

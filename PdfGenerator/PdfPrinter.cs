@@ -58,18 +58,32 @@ namespace PdfGenerator
 
 		private void Print(IEnumerable<IPrintable> printables)
 		{
-			foreach (var printable in printables)
+			int pageIndex = 0;
+
+			printDocument.PrintPage += (_, eventArgs) =>
 			{
-				printDocument.PrintPage += (_, eventArgs) =>
-				{
-					eventArgs.Graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
-					eventArgs.Graphics.SmoothingMode = SmoothingMode.HighQuality;
-					eventArgs.Graphics.CompositingQuality = CompositingQuality.HighQuality;
-					eventArgs.Graphics.CompositingMode = CompositingMode.SourceCopy;
-					eventArgs.Graphics.TextRenderingHint = TextRenderingHint.AntiAlias;
-					printable.DrawOnGraphics(eventArgs.Graphics);
-				};
-			}
+				eventArgs.Graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
+				eventArgs.Graphics.SmoothingMode = SmoothingMode.HighQuality;
+				eventArgs.Graphics.CompositingQuality = CompositingQuality.HighQuality;
+				eventArgs.Graphics.CompositingMode = CompositingMode.SourceCopy;
+				eventArgs.Graphics.TextRenderingHint = TextRenderingHint.AntiAlias;
+
+				var printablesOnPage = printables.Where(p => p.Y / eventArgs.MarginBounds.Bottom == pageIndex);
+
+                foreach (var printableOnPage in printablesOnPage)
+                {
+					var printableOnPageClone = (IPrintable)printableOnPage.Clone();
+					printableOnPageClone.Y %= eventArgs.MarginBounds.Bottom;
+					if (printableOnPageClone is IDimensionPrintable dimensionPrintable)
+                    {
+						dimensionPrintable.EndY %= eventArgs.MarginBounds.Bottom;
+					}
+					printableOnPageClone.DrawOnGraphics(eventArgs.Graphics);
+				}
+				pageIndex++;
+
+				eventArgs.HasMorePages = printables.Any(p => p.Y / eventArgs.MarginBounds.Bottom == pageIndex);
+			};
 
 			printDocument.Print();
 		}
