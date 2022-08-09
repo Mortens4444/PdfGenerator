@@ -15,8 +15,8 @@ namespace PrintPageEditor
 		private Point? mouseDownLocation = null, mouseUpLocation;
 		private Printables printables = new Printables();
 		private Color foregroundColor = Color.Black, fontColor = Color.Black;
-		private int fontSize = 12;
-		private string fontName = "Arial", imageFilePath;
+		private Font font;
+		private string imageFilePath;
 		private IPrintable temporarilyPrintable;
 		private bool showHorizontalHelper, showVerticalHelper;
 		private int mouseX, mouseY;
@@ -24,7 +24,6 @@ namespace PrintPageEditor
 		public MainForm()
 		{
 			InitializeComponent();
-            cbFontSize.SelectedIndex = 4;
 		}
 
 		private void tsmiExit_Click(object sender, EventArgs e)
@@ -114,7 +113,7 @@ namespace PrintPageEditor
 			{
 				if (tabControl.SelectedTab == tpText && !String.IsNullOrWhiteSpace(tbText.Text))
 				{
-					temporarilyPrintable = new PdfText(tbText.Text, mouseDownLocation.Value, fontColor, fontName, fontSize);
+					temporarilyPrintable = new PdfText(tbText.Text, mouseDownLocation.Value, fontColor, font);
 				}
 				else if (tabControl.SelectedTab == tpImage && !String.IsNullOrWhiteSpace(imageFilePath))
 				{
@@ -177,15 +176,9 @@ namespace PrintPageEditor
 		{
 			if (fontDialog1.ShowDialog() == DialogResult.OK)
 			{
-				fontName = fontDialog1.Font.Name;
+				font = fontDialog1.Font;
 				fontColor = fontDialog1.Color;
-				cbFontSize.Text = fontDialog1.Font.Size.ToString();
 			}
-		}
-
-		private void cbFontSize_SelectedIndexChanged(object sender, EventArgs e)
-		{
-			fontSize = Convert.ToInt32(cbFontSize.Items[cbFontSize.SelectedIndex]);
 		}
 
 		private void tsmi_Load_Click(object sender, EventArgs e)
@@ -272,7 +265,8 @@ namespace PrintPageEditor
         {
 			printables = Printables.LoadFromXmlText(Resources.ChildPaint);
             LoadPrintables();
-        }
+			pbCanvas.Invalidate();
+		}
 
         private void tsmiCurriculumVitæ_Click(object sender, EventArgs e)
 		{
@@ -309,6 +303,7 @@ namespace PrintPageEditor
 			{
 				MessageBox.Show(ex.Message, ex.GetType().Name, MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
 			}
+			pbCanvas.Invalidate();
 		}
 
 		private void LoadPrintables()
@@ -331,18 +326,6 @@ namespace PrintPageEditor
 		private void tbText_TextChanged(object sender, EventArgs e)
 		{
 			CreateNewObject();
-		}
-
-		private void cbFontSize_TextChanged(object sender, EventArgs e)
-		{
-			try
-			{
-				fontSize = Convert.ToInt32(cbFontSize.Text);
-			}
-			catch
-			{
-				cbFontSize.Text = fontSize.ToString();
-			}
 		}
 	}
 }

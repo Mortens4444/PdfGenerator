@@ -9,54 +9,41 @@ namespace PdfGenerator.Printable
 {
 	public class PdfText : IPrintable
 	{
+        public Font Font { get; set; }
+		
 		public string Text { get; set; }
 
-		public Color Color { get; private set; }
-
-		public string FontName { get; private set; }
-
-		public float FontSize { get; private set; }
-
-		public Font Font
-		{
-			get
-			{
-				var fontFamily = new FontFamily(FontName);
-				return new Font(fontFamily, FontSize);
-			}
-		}
+		public Color FontColor { get; private set; }
 
 		public Brush Brush
 		{
 			get
 			{
-				return new SolidBrush(Color);
+				return new SolidBrush(FontColor);
 			}
 		}
 
-		public PdfText(string text, int x, int y) : this(text, new Point(x, y), Color.Black) { }
+		public PdfText(string text, Point location, Color fontColor)
+			: this(text, location, fontColor, new Font("Arial", 12))
+        { }
 
-		public PdfText(string text, int x, int y, Color color, string fontName = "Arial", float fontSize = 12) : this(text, new Point(x, y), color, fontName, fontSize) { }
-
-		public PdfText(string text, Point location) : this(text, location, Color.Black) { }
-
-		public PdfText(string text, Point location, Color color, string fontName = "Arial", float fontSize = 12)
+		public PdfText(string text, Point location, Color fontColor, Font font)
 		{
 			Text = text;
 			Location = location;
-			Color = color;
-			FontName = fontName;
-			FontSize = fontSize;
+			FontColor = fontColor;
+			Font = font;
 		}
 
 		public PdfText(Dictionary<string, string> attributes)
 		{
 			Location = GetLocationFromAttributes(attributes);
-			Color = GetColorFromAttributes(attributes);
+			FontColor = GetColorFromAttributes(attributes);
 			Text = attributes[StrText];
-			FontName = attributes.ContainsKey(StrFontName) ? attributes[StrFontName] : "Arial";			
-			FontSize = attributes.ContainsKey(StrFontSize) ? Convert.ToSingle(attributes[StrFontSize]) : 12;
-
+			var fontName = attributes.ContainsKey(StrFontName) ? attributes[StrFontName] : "Arial";			
+			var fontSize = attributes.ContainsKey(StrFontSize) ? Convert.ToSingle(attributes[StrFontSize]) : 12;
+			var fontStyle = GetFontStyle(attributes);
+			Font = new Font(fontName, fontSize, fontStyle);
 			var numberOfLines = Text.Count(c => c == '\n') + 1;
 			if (Text.StartsWith("@"))
             {
@@ -65,7 +52,7 @@ namespace PdfGenerator.Printable
 				var content = File.ReadAllText(currentFile);
 				numberOfLines = content.Count(c => c == '\n') + 1;
 			}
-			LastY += (int)Math.Ceiling(numberOfLines * FontSize * 1.9) + 5;
+			LastY += (int)Math.Ceiling(numberOfLines * Font.Size * 1.9) + 5;
 		}
 
 		public override void DrawOnGraphics(Graphics graphics)
@@ -75,7 +62,7 @@ namespace PdfGenerator.Printable
 
 		public override string ToString()
 		{
-			return $"<PrintText {StrText}=\"{Text}\" {StrX}=\"{X}\" {StrY}=\"{Y}\" {StrFontName}=\"{Font.FontFamily.Name}\" {StrFontSize}=\"{FontSize}\" {StrColor}=\"{Color.Name}\" />";
+			return $"<PrintText {StrText}=\"{Text}\" {StrX}=\"{X}\" {StrY}=\"{Y}\" {StrFontName}=\"{Font.FontFamily.Name}\" {StrFontSize}=\"{Font.Size}\" {StrColor}=\"{FontColor.Name}\" />";
 		}
 
 		public override ListViewItem ToListViewItem()

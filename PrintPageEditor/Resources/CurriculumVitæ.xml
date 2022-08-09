@@ -1,24 +1,24 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Printings>
-	<PrintText text="Curriculum vitæ" x="10" y="5" font_name="Comic Sans MS" font_size="26" color="Black" />
+	<PrintText text="Curriculum vitæ" x="10" y="5" font_name="Comic Sans MS" font_style="bold" font_size="26" color="Black" />
 	
-	<PrintText text="Personal data" x="10" y="50" font_name="Comic Sans MS" font_size="16" color="Black" />
+	<PrintText text="Personal data" x="10" y="50" font_name="Comic Sans MS" font_style="bold" font_size="16" color="Black" />
 	<PrintLine color="Black" x2="500" line_width="1" />
 	<PrintText text="@personal_data.yaml" font_name="Comic Sans MS" font_size="12" color="Black" />
 	
-	<PrintText text="Work experience" font_name="Comic Sans MS" font_size="16" color="Black" />
+	<PrintText text="Work experience" font_name="Comic Sans MS" font_style="bold" font_size="16" color="Black" />
 	<PrintLine color="Black" x2="500" line_width="1" />
 	<PrintText text="@work_experience.yaml" font_name="Comic Sans MS" font_size="12" color="Black" />
 	
-	<PrintText text="Education" y_="700" font_name="Comic Sans MS" font_size="16" color="Black" />
+	<PrintText text="Education" y_="700" font_name="Comic Sans MS" font_style="bold" font_size="16" color="Black" />
 	<PrintLine color="Black" x2="500" line_width="1" />
 	<PrintText text="@education.yaml" font_name="Comic Sans MS" font_size="12" color="Black" />
 	
-	<PrintText text="Language skills" font_name="Comic Sans MS" font_size="16" color="Black" />
+	<PrintText text="Language skills" font_name="Comic Sans MS" font_style="bold" font_size="16" color="Black" />
 	<PrintLine color="Black" x2="500" line_width="1" />
 	<PrintText text="@languages.yaml" font_name="Comic Sans MS" font_size="12" color="Black" />
 	
-	<PrintText text="Computer skills" font_name="Comic Sans MS" font_size="16" color="Black" />
+	<PrintText text="Computer skills" font_name="Comic Sans MS" font_style="bold" font_size="16" color="Black" />
 	<PrintLine color="Black" x2="500" line_width="1" />
 	<PrintText text="@computer_skills.yaml" font_name="Comic Sans MS" font_size="12" color="Black" />
 	

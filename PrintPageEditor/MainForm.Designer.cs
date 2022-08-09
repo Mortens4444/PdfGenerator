@@ -38,7 +38,6 @@
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tpText = new System.Windows.Forms.TabPage();
             this.lblFont = new System.Windows.Forms.Label();
-            this.cbFontSize = new System.Windows.Forms.ComboBox();
             this.tbText = new System.Windows.Forms.TextBox();
             this.btnFont = new System.Windows.Forms.Button();
             this.tpShapes = new System.Windows.Forms.TabPage();
@@ -183,7 +182,6 @@
             // tpText
             // 
             this.tpText.Controls.Add(this.lblFont);
-            this.tpText.Controls.Add(this.cbFontSize);
             this.tpText.Controls.Add(this.tbText);
             this.tpText.Controls.Add(this.btnFont);
             this.tpText.Location = new System.Drawing.Point(4, 22);
@@ -202,32 +200,6 @@
             this.lblFont.Size = new System.Drawing.Size(28, 13);
             this.lblFont.TabIndex = 8;
             this.lblFont.Text = "Font";
-            // 
-            // cbFontSize
-            // 
-            this.cbFontSize.FormattingEnabled = true;
-            this.cbFontSize.Items.AddRange(new object[] {
-            "8",
-            "9",
-            "10",
-            "11",
-            "12",
-            "14",
-            "16",
-            "18",
-            "20",
-            "22",
-            "24",
-            "26",
-            "28",
-            "36",
-            "72"});
-            this.cbFontSize.Location = new System.Drawing.Point(62, 9);
-            this.cbFontSize.Name = "cbFontSize";
-            this.cbFontSize.Size = new System.Drawing.Size(39, 21);
-            this.cbFontSize.TabIndex = 9;
-            this.cbFontSize.SelectedIndexChanged += new System.EventHandler(this.cbFontSize_SelectedIndexChanged);
-            this.cbFontSize.TextChanged += new System.EventHandler(this.cbFontSize_TextChanged);
             // 
             // tbText
             // 
@@ -716,7 +688,6 @@
         private System.Windows.Forms.TabControl tabControl;
         private System.Windows.Forms.TabPage tpText;
         private System.Windows.Forms.Label lblFont;
-        private System.Windows.Forms.ComboBox cbFontSize;
         private System.Windows.Forms.TextBox tbText;
         private System.Windows.Forms.Button btnFont;
         private System.Windows.Forms.TabPage tpShapes;

@@ -29,6 +29,8 @@ namespace PdfGenerator.Printable
 
 		protected const string StrFontSize = "font_size";
 
+		protected const string StrFontStyle = "font_style";
+
 		protected const string StrColor = "color";
 
 		protected const string StrLineWidth = "line_width";
@@ -73,6 +75,22 @@ namespace PdfGenerator.Printable
 			return attributes.ContainsKey(StrWidth) && attributes.ContainsKey(StrHeight) ?
 				new Size(Convert.ToInt32(attributes[StrWidth]), Convert.ToInt32(attributes[StrHeight])) :
 				Size.Empty;
+		}
+
+		protected FontStyle GetFontStyle(Dictionary<string, string> attributes)
+        {
+
+			var result = FontStyle.Regular;
+			if (attributes.ContainsKey(StrFontStyle))
+			{
+				var fontStyles = attributes[StrFontStyle].Split(',', ';');
+				foreach (var fontStyle in fontStyles)
+				{
+					Enum.TryParse(fontStyle, true, out FontStyle style);
+					result |= style;
+				}
+			}
+			return result;
 		}
 
 		protected Color GetColorFromAttributes(Dictionary<string, string> attributes)

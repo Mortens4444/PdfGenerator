@@ -9,8 +9,8 @@ namespace MultiPdfGeneration
 	{
 		static void Main(string[] args)
 		{
-			var resultsFilePath = @".\Results.txt";
-			var printingRulesFilePath = @".\Printings.xml";
+			var resultsFilePath = @".\Resources\Results.txt";
+			var printingRulesFilePath = @".\Resources\Printings.xml";
 
 			var results = File.ReadAllLines(resultsFilePath);
 			var pdfPrinter = new PdfPrinter();
