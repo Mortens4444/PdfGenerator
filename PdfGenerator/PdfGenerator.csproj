@@ -44,7 +44,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Printables.cs" />
-    <Compile Include="PrintablesProvider.cs" />
     <Compile Include="Printable\ISizedPrintable.cs" />
     <Compile Include="Printable\IPrintable.cs" />
     <Compile Include="Printable\PdfEllipse.cs" />

@@ -11,11 +11,6 @@ namespace PdfGenerator
 			return GetTypes(type => type.IsSubclassOf(typeof(TBaseType)) && !type.IsAbstract);
 		}
 
-		public static IEnumerable<Type> GetTypesUnderNamespace(string @namespace)
-		{
-			return GetTypes(type => String.Equals(type.Namespace, @namespace, StringComparison.Ordinal) && !type.IsAbstract);
-		}
-
 		private static IEnumerable<Type> GetTypes(Func<Type, bool> predicate)
 		{
 			var result = new List<Type>();
