@@ -35,11 +35,15 @@ namespace PdfGenerator.Printable
 
 		protected const string StrLineWidth = "line_width";
 
+		protected const string StrFixedLocation = "fixed_location";
+
 		protected static int LastX = 0;
 
 		protected static int LastY = 0;
 
 		public Point Location { get; protected set; }
+
+		public bool IsFixedLocation { get; protected set; }
 
 		public int X
 		{

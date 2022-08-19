@@ -47,6 +47,7 @@ namespace PdfGenerator.Printable
 			Location = GetLocationFromAttributes(attributes);
 			Size = GetSizeFromAttributes(attributes);
 			Fill = attributes.ContainsKey(StrFill);
+			IsFixedLocation = attributes.ContainsKey(StrFixedLocation);
 		}
 
 		public override void DrawOnGraphics(Graphics graphics)

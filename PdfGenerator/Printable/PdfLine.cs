@@ -30,6 +30,7 @@ namespace PdfGenerator.Printable
 			Pen = new Pen(GetColorFromAttributes(attributes), lineWidth);
 			Location = GetLocationFromAttributes(attributes, 0);
 			EndLocation = GetEndLocationFromAttributes(attributes);
+			IsFixedLocation = attributes.ContainsKey(StrFixedLocation);
 		}
 
 		private Point GetEndLocationFromAttributes(Dictionary<string, string> attributes)

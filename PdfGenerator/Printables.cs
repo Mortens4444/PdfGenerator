@@ -20,6 +20,55 @@ namespace PdfGenerator
 			}
 		}
 
+		public void ReplaceMultilinePdfTexts(Dictionary<string, string> replaceables)
+        {
+			foreach (var replaceable in replaceables)
+			{
+				int itemY = 0;
+				PdfText newPdfText = null;
+				int itemIndex = -1;
+				var newItems = new List<PdfText>();
+
+				foreach (var item in this)
+				{
+					if (item is PdfText pdfText && pdfText.Text == replaceable.Key)
+					{
+						itemY = item.Y;
+						itemIndex = IndexOf(item);
+						var lines = replaceable.Value.Split(new[] { "\r\n" }, StringSplitOptions.None);
+
+						for (int i = 0; i < lines.Length; i++)
+						{
+							var line = lines[i];
+							var location = pdfText.Location;
+							location.Y += (int)Math.Ceiling(i * pdfText.Font.Size * 1.9) + (i == 0 ? 0 : 5);
+							newPdfText = new PdfText(line, location, pdfText.Brush.Color, pdfText.Font);
+							newItems.Add(newPdfText);
+                        }
+					}
+					else
+					{
+						if (newPdfText != null && !item.IsFixedLocation)
+						{
+							item.Y = newPdfText.Y + (item.Y - itemY);
+							if (item is PdfLine pdfLine)
+                            {
+								pdfLine.EndY = item.Y;
+                            }
+						}
+					}
+				}
+				if (itemIndex != -1)
+                {
+					RemoveAt(itemIndex);
+                    foreach (var item in newItems)
+                    {
+						Insert(++itemIndex, item);
+					}
+				}
+			}
+		}
+
 		public string GetFileContent()
 		{
 			var fileContent = new StringBuilder($"<?xml version=\"1.0\" encoding=\"utf-8\" ?>{Environment.NewLine}<Printings>{Environment.NewLine}");

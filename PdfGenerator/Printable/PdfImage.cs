@@ -36,6 +36,7 @@ namespace PdfGenerator.Printable
 			Location = GetLocationFromAttributes(attributes);
 			var size = GetSizeFromAttributes(attributes);
 			Size = size != Size.Empty ? size : Image.Size;
+			IsFixedLocation = attributes.ContainsKey(StrFixedLocation);
 		}
 
 		public override void DrawOnGraphics(Graphics graphics)

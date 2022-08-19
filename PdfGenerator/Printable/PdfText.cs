@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.IO;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace PdfGenerator.Printable
@@ -15,7 +13,7 @@ namespace PdfGenerator.Printable
 
 		public Color FontColor { get; private set; }
 
-		public Brush Brush
+		public SolidBrush Brush
 		{
 			get
 			{
@@ -44,16 +42,9 @@ namespace PdfGenerator.Printable
             var fontSize = attributes.ContainsKey(StrFontSize) ? Convert.ToSingle(attributes[StrFontSize]) : 12;
             var fontStyle = GetFontStyle(attributes);
             Font = new Font(fontName, fontSize, fontStyle);
-            var numberOfLines = Text.Count(c => c == '\n') + 1;
-            if (Text.StartsWith("@"))
-            {
-                var fileName = Text.Substring(1);
-                var currentFile = Path.Combine(Application.StartupPath, "Resources", fileName);
-                var content = File.ReadAllText(currentFile);
-                numberOfLines = content.Count(c => c == '\n') + 1;
-            }
-            LastY += (int)Math.Ceiling(numberOfLines * Font.Size * 1.9) + 5;
-        }
+			LastY += (int)Math.Ceiling(Font.Size * 1.9) + 5;
+			IsFixedLocation = attributes.ContainsKey(StrFixedLocation);
+		}
 
         public override void DrawOnGraphics(Graphics graphics)
 		{

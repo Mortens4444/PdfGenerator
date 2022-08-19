@@ -273,14 +273,14 @@ namespace PrintPageEditor
 			var files = new string[]
 			{
 				"personal_data.yaml",
-				"work_experience.yaml",
-				"internship.yaml",
-				"education.yaml",
-				"computer_skills.yaml",
-				"languages.yaml",
-				"other_abilities.yaml",
-				"interests.yaml"
-			};
+                "work_experience.yaml",
+                "internship.yaml",
+                "education.yaml",
+                "computer_skills.yaml",
+                "languages.yaml",
+                "other_abilities.yaml",
+                "interests.yaml"
+            };
 			
 			var replaceables = new Dictionary<string, string>();
 			foreach (var file in files)
@@ -291,13 +291,14 @@ namespace PrintPageEditor
 			}
 
 			printables = Printables.LoadFromXmlText(Resources.CurriculumVitæ);
+			printables.ReplaceMultilinePdfTexts(replaceables);
 			LoadPrintables();
 
 			var pdfPrinter = new PdfPrinter();
 			var printOutputPath = Path.Combine(Application.StartupPath, "Curriculum vitæ.pdf");
 			try
 			{
-				pdfPrinter.Print(printOutputPath, printables, replaceables);
+				pdfPrinter.Print(printOutputPath, printables);
 			}
 			catch (Exception ex)
 			{
