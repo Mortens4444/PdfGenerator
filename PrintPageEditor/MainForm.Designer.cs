@@ -125,7 +125,7 @@
             this.pbCanvas.BackColor = System.Drawing.Color.White;
             this.pbCanvas.Location = new System.Drawing.Point(0, 0);
             this.pbCanvas.Name = "pbCanvas";
-            this.pbCanvas.Size = new System.Drawing.Size(2480, 3508);
+            this.pbCanvas.Size = new System.Drawing.Size(2480, 65535);
             this.pbCanvas.TabIndex = 0;
             this.pbCanvas.TabStop = false;
             this.pbCanvas.Paint += new System.Windows.Forms.PaintEventHandler(this.pbCanvas_Paint);
