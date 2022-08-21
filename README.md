@@ -65,4 +65,4 @@ var printOutputPath = $".\\{position}. {nameAndPosition[0]}.pdf";
 pdfPrinter.Print(printOutputPath, printingRulesFilePath, replaceables);
 ```
 
-For moredetails, please check the *MultiPdfGeneration Program.cs* or the *PrintPageEditor MainForm.cs tsmiCurriculumVitæ_Click event* about templates.
+For more details, please check the *MultiPdfGeneration Program.cs* or the *PrintPageEditor MainForm.cs tsmiCurriculumVitæ_Click event* about templates.
