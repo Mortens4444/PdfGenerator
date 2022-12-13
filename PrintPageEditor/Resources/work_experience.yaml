@@ -1,7 +1,15 @@
+- techysium:
+  full_name: DNXperts Solution Ltd.
+  from: 10/10/2022
+  to: ~
+  role: C# developer
+  projects:
+    - E-Kréta
+
 - ericsson:
   full_name: Ericsson Hungary Ltd.
   from: 04/05/2020
-  to: ~
+  to: 08/10/2022
   role: C# developer
   projects:
     - SDE
@@ -34,8 +42,8 @@
 
 - sziltech:
   full_name: Sziltech Electronic Ltd.
-  from: 06/2018
-  to: 03/2020
+  from: 11/2008
+  to: 01/2013
   role: C++/CLI, C# developer
   projects:
     - LiveView (Video Surveillance System)
