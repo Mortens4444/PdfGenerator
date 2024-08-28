@@ -1,10 +1,13 @@
 - techysium:
   full_name: DNXperts Solution Ltd.
   from: 10/10/2022
-  to: ~
+  to: 30/06/2023
   role: C# developer
   projects:
-    - E-Kréta
+    - eKréta ORR (Oktatási Reporting Rendszer)
+    - eKréta PKR (Pályakövetési Rendszermodul)
+    - eKréta Ügyvitel
+    - eKréta GlobalAPI
 
 - ericsson:
   full_name: Ericsson Hungary Ltd.
@@ -12,7 +15,7 @@
   to: 08/10/2022
   role: C# developer
   projects:
-    - SDE
+    - SDE (Site Development and Engineering)
 
 - cognex:
   full_name: Cognex Hungary Ltd. 
@@ -29,7 +32,7 @@
   to: 05/2018
   role: C# developer (Ericsson contributor)
   projects:
-    - PCI
+    - PCI (Product Configuration and Integration)
 
 - ozeki:
   full_name: Ozeki Informatics Ltd.
