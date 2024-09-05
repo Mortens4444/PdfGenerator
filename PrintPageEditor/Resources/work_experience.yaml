@@ -1,3 +1,13 @@
+- self_employed:
+  full_name: Papp Tibor EV
+  from: 21/08/2024
+  to: 22/04/2024
+  role: .NET MAUI developer
+  projects:
+    - KertMester (https://play.google.com/store/apps/details?id=com.mortens.kertmester&pli=1)
+    - VisualHotelManager
+    - H4ckW1thM3
+
 - techysium:
   full_name: DNXperts Solution Ltd.
   from: 10/10/2022
